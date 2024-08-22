@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Add Product</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+	<style>
+		.navbar-brand {
+			font-weight: bold;
+		}
+
+		.navbar-text {
+			color: #ff5733;
+		}
+
+		.nav-link {
+			font-weight: bold;
+		}
+
+		.nav-link:hover {
+			transform: scale(1.2);
+		}
+
+		.navbar {
+			background-color: black;
+		}
+
+		.container {
+			border-radius: 10px;
+			background-color: white;
+			margin-top: 2rem;
+			box-shadow: 0 4px 8px black;
+			padding: 2rem;
+			transition: transform 0.3s;
+		}
+
+		.btn-primary {
+			background-color: #ff5733;
+			border: none;
+		}
+
+		.btn-primary:hover {
+			background-color: #ff2a00;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
+		<a class="navbar-brand">GYM<span style="color: #ff5733;">ADDICT</span></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<h2 style="font-weight: bold;">Add <span style="color: #ff5733;">Product</span></h2>
+		<form th:action="@{/add}" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="category">Category:</label>
+				<select class="form-control" id="category" name="category" required>
+					<option value="gym-equipment">Gym Equipment</option>
+					<option value="gym-wear">Gym Wear</option>
+					<option value="supplements">Supplements</option>
+					<option value="shoes">Shoes</option>
+					<!-- Add more categories as needed -->
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="title">Title:</label>
+				<input type="text" class="form-control" id="title" name="title" required>
+			</div>
+			<div class="form-group">
+				<label for="price">Price:</label>
+				<input type="text" class="form-control" id="price" name="price" required>
+			</div>
+			<div class="form-group">
+				<label for="discountPrice">Discount Price</label>
+				<input type="text" class="form-control" id="discountPrice" name="discountPrice" required>
+			</div>
+			<div class="form-group">
+				<label for="description">Description</label>
+				<textarea class="form-control" id="description" name="description" required></textarea>
+			</div>
+			<div class="form-group">
+				<label for="image">Image 1:</label>
+				<input type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
+			</div>
+			<div class="form-group">
+				<label for="image2">Image 2:</label>
+				<input type="file" class="form-control-file" id="image2" name="image2" accept="image/*" required>
+			</div>
+			<div class="form-group">
+				<label for="image3">Image 3:</label>
+				<input type="file" class="form-control-file" id="image3" name="image3" accept="image/*" required>
+			</div>
+			<!-- Add more fields for other product attributes as needed -->
+			<button type="submit" class="btn btn-primary">Add Product</button>
+		</form>
+	</div>
+</body>
+
+</html>

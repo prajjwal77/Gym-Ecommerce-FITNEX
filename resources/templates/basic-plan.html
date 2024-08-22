@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="'Basic Plan - Your Gym'">Basic Plan</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+		.navbar-brand {
+			font-weight: bold;
+		}
+
+		.navbar-text {
+			color: #ff5733;
+		}
+
+		.nav-link {
+			font-weight: bold;
+		}
+
+		.nav-link:hover {
+			transform: scale(1.2);
+		}
+
+		.navbar {
+			background-color: black;
+		}
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #343a40;
+            padding: 15px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .plan-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .plan-details h2 {
+            color: #343a40;
+        }
+
+        .plan-pricing p {
+            font-size: 18px;
+            color: #495057;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
+		<a class="navbar-brand">GYM<span style="color: #ff5733;">ADDICT</span></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+				<!--<li class="nav-item">
+					<a class="nav-link" href="/add">Sell Product</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/cart"><i class="fas fa-cart-plus"></i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/order-history">Order</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/profile">Profile</a>
+				</li>-->
+			</ul>
+		</div>
+	</nav>
+    <div class="plan-container">
+        <h1 th:text="${planName}">Basic Plan</h1>
+        <div class="plan-details">
+            <p>Access to all basic fitness classes</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Cardio workouts</li>
+                <li><i class="fas fa-check-circle"></i> Weight training</li>
+                <li><i class="fas fa-check-circle"></i> Yoga sessions</li>
+            </ul>
+            <div class="plan-pricing">
+                <h3>Pricing</h3>
+                <p>Monthly: ₹<span th:text="${monthlyPrice}">1,000</span></p>
+                <p>Three Months: ₹<span th:text="${threeMonthPrice}">2,700</span></p>
+                <p>Six Months: ₹<span th:text="${sixMonthPrice}">5,000</span></p>
+                <p>Yearly: ₹<span th:text="${yearlyPrice}">9,000</span></p>
+            </div>
+
+            <form th:action="@{/purchase}" method="post">
+                <input type="hidden" name="planId" value="1">
+                <label for="duration">Select Duration:</label>
+                <select name="duration" id="duration">
+                    <option value="monthly">Monthly</option>
+                    <option value="three-month">Three Months</option>
+                    <option value="six-month">Six Months</option>
+                    <option value="yearly">Yearly</option>
+                </select><br>
+                <input type="hidden" name="userId" th:value="${userId}">
+                <button type="submit" class="btn btn-primary">Select Plan</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
