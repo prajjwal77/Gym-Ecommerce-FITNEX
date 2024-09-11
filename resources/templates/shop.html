@@ -267,28 +267,7 @@
 			</main>
 		</div>
 	</div>
-	<!--<script>
-    function showCategory(category) {
-        const productList = document.getElementById('product-list');
-        productList.innerHTML = '';
-
-        const filteredProducts = /*[[${products}]]*/ []; // Thymeleaf will replace this with actual data.
-        const categoryProducts = filteredProducts.filter(product => product.category === category);
-        categoryProducts.forEach(product => {
-            const productItem = document.createElement('div');
-            productItem.className = 'col-md-4';
-            productItem.innerHTML = `
-                <div class="product-item">
-                    <img src="@{'/uploads/' + ${product.img}}"  alt="${product.title}" />
-                    <div class="product-title">${product.title}</div>
-                    <p class="product-price">${product.price}</p>
-                    <button class="btn btn-primary" onclick="addToCart('${product.title}', '${product.price}', '${product.img}')">Add to Cart</button>
-                </div>
-            `;
-            productList.appendChild(productItem);
-        });
-    }
-</script>-->
+	
 </body>
 
 </html>
