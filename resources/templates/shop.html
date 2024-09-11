@@ -64,7 +64,7 @@
 			box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 			transition: all 0.3s ease;
 			text-align: center;
-			height: 500px;
+			height: 600px;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
@@ -94,7 +94,7 @@
 
 		.product-title {
 			font-size: 1.4rem;
-			font-weight: bold;
+			font-weight: 500;
 			color: #333;
 			margin-bottom: 5px;
 		}
@@ -162,6 +162,15 @@
 			/* Ensures it's treated as a block element */
 		}
 		.product-details .description  {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			width: 100%;
+			/* Ensures it stays within the container width */
+			display: block;
+			/* Ensures it's treated as a block element */
+		}
+		.product-details .brand,product-title  {
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
