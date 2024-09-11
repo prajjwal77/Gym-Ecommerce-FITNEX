@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Set Membership Plans</title>
+</head>
+<body>
+    <h1>Set Membership Plans</h1>
+    <form th:action="@{/set-plans}" method="post">
+        <label for="name">Plan Name:</label>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="monthlyPrice">Monthly Price:</label>
+        <input type="number" id="monthlyPrice" name="monthlyPrice"><br>
+
+        <label for="threeMonthPrice">Three Month Price:</label>
+        <input type="number" id="threeMonthPrice" name="threeMonthPrice"><br>
+
+        <label for="sixMonthPrice">Six Month Price:</label>
+        <input type="number" id="sixMonthPrice" name="sixMonthPrice"><br>
+
+        <label for="yearlyPrice">Yearly Price:</label>
+        <input type="number" id="yearlyPrice" name="yearlyPrice"><br>
+
+        <button type="submit">Set Plan</button>
+    </form>
+
+    <h2>Existing Plans</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Monthly Price</th>
+                <th>Three Month Price</th>
+                <th>Six Month Price</th>
+                <th>Yearly Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="plan : ${plans}">
+                <td th:text="${plan.name}"></td>
+                <td th:text="${plan.monthlyPrice}"></td>
+                <td th:text="${plan.threeMonthPrice}"></td>
+                <td th:text="${plan.sixMonthPrice}"></td>
+                <td th:text="${plan.yearlyPrice}"></td>
+                <td>
+                    <form th:action="@{/delete-plan}" method="post">
+                        <input type="hidden" name="planId" th:value="${plan.id}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

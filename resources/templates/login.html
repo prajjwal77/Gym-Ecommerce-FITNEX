@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>GymADDICT Fitness Center - Login</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background-color: #111;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .navbar-text {
+            color: #ff5733;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-section .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .hero-content .btn {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+
+        .btn-primary {
+            background-color: #ff5733;
+            border: none;
+        }
+
+        .btn-secondary {
+            background-color: grey;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: rgb(251, 60, 4);
+        }
+
+        .navbar-transparent {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .oauth-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .oauth-buttons a {
+            display: inline-block;
+            text-align: center;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .oauth-buttons .google {
+            background-color: #db4a39;
+        }
+
+        .oauth-buttons .facebook {
+            background-color: #3b5998;
+        }
+
+        .oauth-buttons .twitter {
+            background-color: #1da1f2;
+        }
+
+        .oauth-buttons .instagram {
+            background-color: #e1306c;
+        }
+
+        .oauth-buttons i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
+        <a class="navbar-brand" href="#">GYM<span style="color: #ff5733;">ADDICT</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Login
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                        <a class="dropdown-item" href="/user-login">User Login</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <div class="container mt-5">
+        <div>
+            <h2>Login / <a href="/register" style="color: #ecf0f1;">Register</a></h2>
+        </div>
+        <form th:action="@{/login}" method="post">
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+            <div th:if="${param.error}" class="error-message">
+                <p>Invalid email or password.</p>
+            </div>
+        </form>
+        </br>
+        <div class="oauth-buttons">
+            <a href="/oauth2/authorization/google" class="google"><i class="fab fa-google"></i>Login with Google</a>
+            <a href="/oauth2/authorization/facebook" class="facebook"><i class="fab fa-facebook-f"></i>Login with Facebook</a>
+            <a href="/oauth2/authorization/twitter" class="twitter"><i class="fab fa-twitter"></i>Login with Twitter</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

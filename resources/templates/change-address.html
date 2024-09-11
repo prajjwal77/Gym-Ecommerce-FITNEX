@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Address</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #ff5733;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #ff2a00;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .navbar-text {
+            color: #ff5733;
+        }
+        .nav-link {
+            font-weight: bold;
+        }
+        .nav-link:hover {
+            transform: scale(1.2);
+        }
+        .navbar {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
+        <a class="navbar-brand">GYM<span style="color: #ff5733;">ADDICT</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/add">Sell Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/order">Order</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Change Address</h2>
+            <form th:action="@{/checkout/address/change}" method="post">
+                <div class="form-group">
+                    <label for="street">Street:</label>
+                    <input type="text" id="street" name="street" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" name="state" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="zipcode">Zipcode:</label>
+                    <input type="text" id="zipcode" name="zipcode" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone" name="phone" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Address</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

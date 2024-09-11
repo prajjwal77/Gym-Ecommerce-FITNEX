@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GymADDICT Fitness Center</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #fff;
+			background-color: #111;
+		}
+
+		.navbar-brand {
+			font-weight: bold;
+		}
+
+		.navbar-text {
+			color: #ff5733;
+		}
+
+		.nav-link {
+			font-weight: bold;
+		}
+
+		.nav-link:hover {
+			transform: scale(1.2);
+		}
+
+		.hero-section {
+			position: relative;
+			height: 100vh;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			background-image: url('/images/background-gym.jpg');
+		}
+
+		.hero-section .overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(54, 54, 54, 0.7);
+		}
+
+		.hero-content {
+			position: relative;
+			z-index: 2;
+			max-width: 600px;
+			padding: 20px;
+		}
+
+		.hero-content h1 {
+			font-size: 3em;
+			margin-bottom: 20px;
+		}
+
+		.hero-content p {
+			font-size: 1.2em;
+			margin-bottom: 30px;
+		}
+
+		.hero-content .btn {
+			margin: 5px;
+			padding: 10px 20px;
+			font-size: 1em;
+		}
+
+		.btn-primary {
+			background-color: #ff5733;
+			border: none;
+		}
+
+		.btn-secondary {
+			background-color: grey;
+			border: none;
+		}
+
+		.btn-primary:hover {
+			background-color: rgb(251, 60, 4);
+		}
+
+		.navbar-transparent {
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		.section {
+			padding: 60px 20px;
+			text-align: center;
+		}
+
+		.section h2 {
+			color: #ff5733;
+			margin-bottom: 20px;
+		}
+
+		.section p {
+			color: #ddd;
+		}
+
+		.trainers,
+		.classes,
+		.testimonials {
+			background-color: #222;
+		}
+
+		.contact-form {
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		footer {
+			background-color: #000;
+			padding: 20px;
+			text-align: center;
+			color: #fff;
+		}
+
+		.trainer-card {
+			position: relative;
+			height: auto;
+			overflow: hidden;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px grey;
+			transition: transform 0.3s;
+			margin-bottom: 20px;
+		}
+
+		.trainer-card:hover {
+			transform: scale(1.05);
+		}
+
+		.image-wrapper {
+			position: relative;
+			height: auto;
+			/* Set the desired height */
+			overflow: hidden;
+			/* Hide overflow to crop the image */
+		}
+
+		.image-wrapper-trainers {
+			position: relative;
+			height: 350px;
+			/* Set the desired height */
+			overflow: hidden;
+			/* Hide overflow to crop the image */
+		}
+
+
+		.cropped-image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			/* Crop the image to cover the container */
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+		}
+
+		.trainer-name {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			color: #fff;
+			padding: 10px;
+			font-size: 1.5em;
+			text-align: center;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+
+		.trainer-details {
+			padding: 15px;
+			text-align: center;
+		}
+
+		.trainer-details p {
+			margin: 0;
+		}
+
+		.trainer-details .description {
+			margin-top: 10px;
+			color: #666;
+		}
+
+		/* Membership style */
+		.membership-section {
+			padding: 50px 0;
+			color: antiquewhite;
+		}
+
+		.membership-card {
+			border: 1px solid #ddd;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px grey;
+			transition: transform 0.3s;
+			margin-bottom: 20px;
+		}
+
+		.membership-card:hover {
+			transform: scale(1.05);
+		}
+
+		.membership-card img {
+			width: 100%;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+		}
+
+		.membership-details {
+			padding: 20px;
+			text-align: center;
+		}
+
+		.membership-title {
+			font-size: 1.5em;
+			margin-bottom: 10px;
+		}
+
+		.membership-price {
+			font-size: 1.2em;
+			color: #28a745;
+			margin-bottom: 10px;
+		}
+
+		.membership-description {
+			color: #666;
+			margin-bottom: 10px;
+		}
+
+		.btn-join {
+			background-color: #007bff;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.btn-join:hover {
+			background-color: #0056b3;
+		}
+
+		.section.motivation {
+
+			padding: 60px 0;
+		}
+
+		.motivation-item {
+			margin-bottom: 30px;
+		}
+
+		.motivation-quote {
+
+			position: relative;
+			background-size: cover;
+			background-position: center;
+			height: 300px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 10px;
+			overflow: hidden;
+		}
+
+		.quote-overlay {
+			position: absolute;
+			border: 1px solid #ddd;
+			box-shadow: 0 4px 8px grey;
+
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+			border-radius: 10px;
+		}
+
+		.quote-text {
+			font-size: 1.5rem;
+			font-weight: 600;
+			margin-bottom: 10px;
+		}
+
+		.quote-author {
+			font-size: 1rem;
+			font-weight: 400;
+			opacity: 0.8;
+		}
+
+		.plan-card {
+			box-shadow: 0 4px 8px grey;
+			border-radius: 10px;
+			border: 1px solid #ddd;
+			padding: 30px;
+			margin-bottom: 20px;
+			transition: transform 0.3s;
+		}
+
+		.plan-card:hover {
+			transform: scale(1.05);
+		}
+
+		.plan-card h3 {
+			color: #007bff;
+			font-size: 24px;
+			margin-bottom: 15px;
+		}
+
+		.plan-card ul {
+			list-style: none;
+			padding-left: 0;
+		}
+
+		.plan-card ul li {
+			margin-bottom: 10px;
+			font-size: 16px;
+		}
+
+		.plan-card ul li i {
+			color: #28a745;
+			margin-right: 10px;
+		}
+
+		.plan-card .price {
+			font-size: 28px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+
+		.plan-card .btn-select {
+			background-color: #007bff;
+			color: white;
+			border-radius: 50px;
+			padding: 10px 30px;
+			font-size: 18px;
+			transition: background-color 0.3s;
+		}
+
+		.plan-card .btn-select:hover {
+			background-color: #0056b3;
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
+		<a class="navbar-brand">GYM<span style="color: #ff5733;">ADDICT</span></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/login">Login</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#classes">Classes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#trainer">Trainer</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#membership">Membership</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/shop">Shop</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="#blog">Blog</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#about">About</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/profile">Profile</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<header class="hero-section">
+		<div class="overlay"></div>
+		<div class="hero-content">
+			<h2 style="font-weight: bold;">PATH <span style="color: #ff5733;">TO</span> PEAK <span
+					style="color: #ff5733;">PERFORMANCE</span></h2>
+			<p>Welcome to your journey of transformation! Our expert guidance and personalized plans are designed to
+				empower you in building a stronger, healthier body. Whether you're just starting out or looking to push
+				your limits, we're here to support every step of the way.
+
+				Explore our programs and get in touch to start your fitness adventure today.</p>
+			<a class="btn btn-primary" href="#contact">CONTACT</a>
+			<a class="btn btn-secondary" href="#about">READ MORE</a>
+		</div>
+	</header>
+
+	<!-- Motivation Section -->
+	<section id="motivation" class="section motivation">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h2 style="font-size: 2.5rem; font-weight: 700; color:#fff;  margin-bottom: 1.5rem;">ACHIEVE <span
+							style="color: #ff5733;">YOUR</span> FITNESS <span style="color: #ff5733;">GOALS</span></h2>
+					<p style="font-size: 1.2rem; color:#fff; font-weight: bold;">Unleash your potential with the right
+						mindset and inspiration. Your fitness journey starts here!</p>
+				</div>
+			</div>
+			<div id="motivationCarousel" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#motivationCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#motivationCarousel" data-slide-to="1"></li>
+					<li data-target="#motivationCarousel" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div class="row">
+							<!-- Motivation Quote 1 -->
+							<div class="col-md-4">
+								<div class="motivation-item">
+									<div class="motivation-quote">
+										<div class="quote-overlay">
+											<p class="quote-text">“All progress takes place outside the comfort zone.”
+											</p>
+											<span class="quote-author">- Michal Joan Bobak</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Motivation Quote 2 -->
+							<div class="col-md-4">
+								<div class="motivation-item">
+									<div class="motivation-quote">
+										<!--style="background-image: url('/images/motivation2.jpg');"-->
+										<div class="quote-overlay">
+											<p class="quote-text">“Action is the foundational key to all success.”</p>
+											<span class="quote-author">- Pablo Picasso</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Motivation Quote 3 -->
+							<div class="col-md-4">
+								<div class="motivation-item">
+									<div class="motivation-quote">
+										<div class="quote-overlay">
+											<p class="quote-text">"Success starts with self-discipline."</p>
+											<span class="quote-author">- Unknown</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="row">
+							<!-- Motivation Quote 4 -->
+							<div class="col-md-4">
+								<div class="motivation-item">
+									<div class="motivation-quote">
+										<div class="quote-overlay">
+											<p class="quote-text">"The body achieves what the mind believes."</p>
+											<span class="quote-author">- Anonymous</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Motivation Quote 5 -->
+							<div class="col-md-4">
+								<div class="motivation-item">
+									<div class="motivation-quote">
+										<div class="quote-overlay">
+											<p class="quote-text">"Train insane or remain the same."</p>
+											<span class="quote-author">- Unknown</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Motivation Quote 6 -->
+							<div class="col-md-4">
+								<div class="motivation-item">
+									<div class="motivation-quote">
+										<div class="quote-overlay">
+											<p class="quote-text">"Your limitation—it's only your imagination."</p>
+											<span class="quote-author">- Unknown</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="row">
+							<!-- Motivation Quote 7 -->
+							<div class="col-md-4">
+								<div class="motivation-item">
+									<div class="motivation-quote">
+										<div class="quote-overlay">
+											<p class="quote-text">"Do something today that your future self will thank
+												you for."</p>
+											<span class="quote-author">- Anonymous</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Motivation Quote 8 -->
+							<div class="col-md-4">
+								<div class="motivation-item">
+									<div class="motivation-quote">
+										<div class="quote-overlay">
+											<p class="quote-text">"Success is what comes after your stop making
+												excuses."</p>
+											<span class="quote-author">- Luis Galarza</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Motivation Quote 9 -->
+							<div class="col-md-4">
+								<div class="motivation-item">
+									<div class="motivation-quote">
+										<div class="quote-overlay">
+											<p class="quote-text">"Hard work beats talent when talent doesn't work
+												hard."</p>
+											<span class="quote-author">- Tim Notke</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Membership - Section -->
+	<section id="membership" class="membership-section">
+		<div class="container">
+			<div class="text-center mb-5">
+				<h1 style="font-size: 2.5rem; font-weight: 700; color:#fff;  margin-bottom: 1.5rem;">Select <span
+						style="color: #ff5733;">Your</span> Membership <span style="color: #ff5733;">Plan</span></h1>
+				<p style="font-weight: bold; color: white; font-size: 1.2rem;">Choose a plan that suits your fitness
+					goals and start your journey today!</p>
+			</div>
+
+			<div class="row">
+				<!-- Basic Plan -->
+				<div class="col-md-4">
+					<div class="plan-card">
+						<h3>Basic Plan</h3>
+						<ul>
+							<li><i class="fas fa-check-circle"></i> Access to basic fitness classes</li>
+							<li><i class="fas fa-check-circle"></i> Cardio workouts</li>
+							<li><i class="fas fa-check-circle"></i> Weight training</li>
+							<li><i class="fas fa-check-circle"></i> Yoga sessions</li>
+						</ul>
+						<p class="price">₹999/month</p>
+						<form action="/basic-plan" method="get">
+							<input type="hidden" name="planId" value="1">
+							<input type="hidden" name="userId" th:value="${userId}">
+							<button type="submit" class="btn btn-primary btn-select">Select Basic Plan</button>
+						</form>
+					</div>
+				</div>
+
+				<!-- Standard Plan -->
+				<div class="col-md-4">
+					<div class="plan-card">
+						<h3>Standard Plan</h3>
+						<ul>
+							<li><i class="fas fa-check-circle"></i> Access to all fitness classes</li>
+							<li><i class="fas fa-check-circle"></i> Personal training sessions</li>
+							<li><i class="fas fa-check-circle"></i> Nutrition plans</li>
+							<li><i class="fas fa-check-circle"></i> Group workouts</li>
+						</ul>
+						<p class="price">₹2,000/month</p>
+						<form action="/standard-plan" method="get">
+							<input type="hidden" name="planId" value="1">
+							<input type="hidden" name="userId" th:value="${userId}">
+							<button type="submit" class="btn btn-primary btn-select">Select Standard Plan</button>
+						</form>
+					</div>
+				</div>
+
+				<!-- Premium Plan -->
+				<div class="col-md-4">
+					<div class="plan-card">
+						<h3>Premium Plan</h3>
+						<ul>
+							<li><i class="fas fa-check-circle"></i> All-inclusive fitness access</li>
+							<li><i class="fas fa-check-circle"></i> Unlimited personal training</li>
+							<li><i class="fas fa-check-circle"></i> Advanced nutrition plans</li>
+							<li><i class="fas fa-check-circle"></i> Premium group workouts</li>
+						</ul>
+						<p class="price">₹3,000/month</p>
+						<form action="/premium-plan" method="get">
+							<input type="hidden" name="planId" value="1">
+							<input type="hidden" name="userId" th:value="${userId}">
+							<button type="submit" class="btn btn-primary btn-select">Select Premium Plan</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Classes Section -->
+	<section id="classes" class="section bg-color-3 padding-120">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-title white">
+						<h2 style="font-size: 2.5rem; font-weight: 700; color: #007bff; margin-bottom: 1.5rem;">OUR
+							<span style="color: #ff5733;">CLASSES</span>
+						</h2>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div id="featured-classes-carousel" class="carousel slide" data-ride="carousel">
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<!-- Slide 1 -->
+								<div class="carousel-item active">
+									<div class="row">
+										<!-- Featured Class 1 -->
+										<div class="col-md-4">
+											<div class="class-item trainer-card">
+												<div class="image-wrapper">
+													<img src="/images/yoga.webp" class="img-fluid cropped-image"
+														alt="Class 1">
+													<div class="trainer-name">YOGA</div>
+												</div>
+												<div class="content trainer-details">
+													<p class="description">Discover a Harmony of Body, Mind, and Spirit
+														as You Find Your Inner Balance Through Graceful Poses and Deep
+														Breathing Techniques.</p>
+												</div>
+											</div>
+										</div>
+										<!-- Featured Class 2 -->
+										<div class="col-md-4">
+											<div class="class-item trainer-card">
+												<div class="image-wrapper">
+													<img src="/images/builder.jpg" class="img-fluid cropped-image"
+														alt="Class 2">
+													<div class="trainer-name">Body Building</div>
+												</div>
+												<div class="content trainer-details">
+													<p class="description">Transform Your Body and Unleash Your Inner
+														Strength with Intense Workouts Designed to Build Muscle, Define
+														Your Physique, and Boost Your Confidence.</p>
+												</div>
+											</div>
+										</div>
+										<!-- Featured Class 3 -->
+										<div class="col-md-4">
+											<div class="class-item trainer-card">
+												<div class="image-wrapper">
+													<img src="/images/gymBlog1.jpg" class="img-fluid cropped-image"
+														alt="Class 3">
+													<div class="trainer-name">CARDIO</div>
+												</div>
+												<div class="content trainer-details">
+													<p class="description">Ignite Your Cardiovascular System and Enhance
+														Your Endurance as You Engage in Heart-Pumping Activities
+														Tailored to Elevate Your Heart Health and Stamina.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Slide 2 -->
+								<div class="carousel-item">
+									<div class="row">
+										<!-- Featured Class 4 -->
+										<div class="col-md-4">
+											<div class="class-item trainer-card">
+												<div class="image-wrapper">
+													<img src="/images/cycling.jpg" class="img-fluid cropped-image"
+														alt="Class 4">
+													<div class="trainer-name">Cycling</div>
+												</div>
+												<div class="content trainer-details">
+													<p class="description">Embark on an Adventure of Fitness and Fun as
+														You Pedal Your Way to Total Body Wellness, Strengthening Muscles
+														and Burning Calories with Every Spin of the Wheel.</p>
+												</div>
+											</div>
+										</div>
+										<!-- Featured Class 5 -->
+										<div class="col-md-4">
+											<div class="class-item trainer-card">
+												<div class="image-wrapper">
+													<img src="/images/meditation.jpg" class="img-fluid cropped-image"
+														alt="Class 5">
+													<div class="trainer-name">Meditation</div>
+												</div>
+												<div class="content trainer-details">
+													<p class="description">Embark on a Journey of Self-Discovery and
+														Inner Peace as You Quiet Your Mind, Center Your Spirit, and
+														Renew Your Energy Through the Ancient Practice of Meditation.
+													</p>
+												</div>
+											</div>
+										</div>
+										<!-- Featured Class 6 -->
+										<div class="col-md-4">
+											<div class="class-item trainer-card">
+												<div class="image-wrapper">
+													<img src="/images/running.jpeg" class="img-fluid cropped-image"
+														alt="Class 6">
+													<div class="trainer-name">Running</div>
+												</div>
+												<div class="content trainer-details">
+													<p class="description">Experience the Freedom of Movement and the
+														Joy of Achievement as You Lace Up Your Shoes and Hit the
+														Pavement, Running Your Way to Improved Health, Mental Clarity,
+														and Happiness.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Indicators -->
+							</br>
+							</br>
+							<ul class="carousel-indicators">
+								<li data-target="#featured-classes-carousel" data-slide-to="0" class="active"></li>
+								<li data-target="#featured-classes-carousel" data-slide-to="1"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</section>
+
+	<!-- Trainer Section -->
+
+
+	<section id="trainer" class="section bg-color-3 padding-120">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-title white">
+						<h2 style="font-size: 2.5rem; font-weight: 700; color: #007bff; margin-bottom: 1.5rem;">TRAINERS
+						</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<!-- Trainer 1 -->
+				<div class="col-md-4">
+					<div class="trainer-card">
+						<div class="image-wrapper-trainers">
+							<img src="/images/trainer1.jpg" class="img-fluid" alt="Trainer 1">
+							<div class="trainer-name">Prajjwal Yadav</div>
+						</div>
+						<div class="trainer-details">
+							<p>Personal Trainer</p>
+							<p class="description">Certified personal trainer with expertise in weight loss, strength
+								training, and nutrition.</p>
+						</div>
+					</div>
+				</div>
+				<!-- Trainer 2 -->
+				<div class="col-md-4">
+					<div class="trainer-card">
+						<div class="image-wrapper-trainers">
+							<img src="/images/trainer2.jpg" class="img-fluid cropped-image" alt="Trainer 2">
+							<div class="trainer-name">Aditi Pandit</div>
+						</div>
+						<div class="trainer-details">
+							<p>Yoga Instructor</p>
+							<p class="description">Experienced yoga instructor specializing in hatha yoga and
+								mindfulness meditation.</p>
+						</div>
+					</div>
+				</div>
+				<!-- Trainer 3 -->
+				<div class="col-md-4">
+					<div class="trainer-card">
+						<div class="image-wrapper-trainers">
+							<img src="/images/trainer3.jpg" class="img-fluid cropped-image" alt="Trainer 3">
+							<div class="trainer-name">Jeet Selal</div>
+						</div>
+						<div class="trainer-details">
+							<p>Cardio Coach</p>
+							<p class="description">Passionate about helping clients improve their cardiovascular health
+								through fun and effective workouts.</p>
+						</div>
+					</div>
+				</div>
+				<!-- Trainer 4 -->
+				<div class="col-md-4">
+					<div class="trainer-card">
+						<div class="image-wrapper-trainers">
+							<img src="/images/trainer4.png" class="img-fluid cropped-image" alt="Trainer 4">
+							<div class="trainer-name">Abhishek Yadav</div>
+						</div>
+						<div class="trainer-details">
+							<p>Bodybuilding Coach</p>
+							<p class="description">Experienced bodybuilding coach with a passion for helping clients
+								build muscle, improve strength, and achieve their fitness goals.</p>
+						</div>
+					</div>
+				</div>
+				<!-- Trainer 5 -->
+				<div class="col-md-4">
+					<div class="trainer-card">
+						<div class="image-wrapper-trainers">
+							<img src="/images/trainer5.jpg" class="img-fluid cropped-image" alt="Trainer 5">
+							<div class="trainer-name">Sarah Johnson</div>
+						</div>
+						<div class="trainer-details">
+							<p>Running Coach</p>
+							<p class="description">Dedicated running coach specializing in marathon training, speed
+								improvement, and injury prevention techniques.</p>
+						</div>
+					</div>
+				</div>
+				<!-- Trainer 6 -->
+				<div class="col-md-4">
+					<div class="trainer-card">
+						<div class="image-wrapper-trainers">
+							<img src="/images/trainer6.png" class="img-fluid cropped-image" alt="Trainer 6">
+							<div class="trainer-name">Michael Anderson</div>
+						</div>
+						<div class="trainer-details">
+							<p>Cycling Instructor</p>
+							<p class="description">Passionate cycling instructor committed to helping riders of all
+								levels improve their skills, endurance, and performance on the bike.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Blog Section -->
+	<section id="blog" class="section blog">
+		<h2 style="font-size: 2.5rem; font-weight: 700; color: #007bff; margin-bottom: 1.5rem;">Blog</h2>
+		<p>Stay updated with the latest fitness trends and tips from our experts.</p>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card blog-card">
+						<img src="/images/gymBlog1.jpg" class="card-img-top" alt="Fitness Tips">
+						<div class="card-body blog-card-body">
+							<h5 class="card-title blog-card-title" style="color: #000;">Top 10 Fitness Tips</h5>
+							<p class="card-text blog-card-text" style="color: #000;">Discover the best fitness tips to
+								help you stay in shape and achieve your fitness goals.</p>
+						</div>
+						<div class="card-footer blog-card-footer">
+							<span style="color: grey;">May 20, 2024</span>
+							<a href="/blogs">Read More</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card blog-card">
+						<img src="/images/gymBlog2.jpg" class="card-img-top" alt="Healthy Eating">
+						<div class="card-body blog-card-body">
+							<h5 class="card-title blog-card-title" style="color: #000;">Healthy Eating Habits</h5>
+							<p class="card-text blog-card-text" style="color: #000;">Learn about healthy eating habits
+								that can complement your fitness routine.</p>
+						</div>
+						<div class="card-footer blog-card-footer">
+							<span style="color: grey;">May 15, 2024</span>
+							<a href="/blogs">Read More</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card blog-card">
+						<img src="/images/gymBlog5.jpg" class="card-img-top" alt="Yoga Benefits">
+						<div class="card-body blog-card-body">
+							<h5 class="card-title blog-card-title" style="color: #000;">Benefits of Yoga</h5>
+							<p class="card-text blog-card-text" style="color: #000;">Explore the numerous benefits of
+								incorporating yoga into your fitness regimen.</p>
+						</div>
+						<div class="card-footer blog-card-footer">
+							<span style="color: grey;">May 10, 2024</span>
+							<a href="/blogs">Read More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+	</section>
+
+	<!-- About Us Section -->
+	<section id="about" class="section about" style="padding: 5rem 0; background-color: #111">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 mb-4 mb-lg-0">
+					<img src="/images/about.avif" class="img-fluid about-image" alt="About Image"
+						style="border-radius: 10px; box-shadow: 0 0 10px grey; transition: transform 0.3s ease;">
+					<img src="/images/about2.jpg" class="img-fluid about-image" alt="About Image"
+						style="border-radius: 10px; box-shadow: 0 0 10px grey; transition: transform 0.3s ease;">
+
+				</div>
+				<div class="col-lg-6">
+					<div class="about-content"
+						style="background-color:  #111; padding: 2rem; border-radius: 10px; box-shadow: 0 0 10px grey;">
+						<h2 style="font-size: 2.5rem; font-weight: 700; color: #007bff; margin-bottom: 1.5rem;">About
+							<span style="color: #ff5733;">Us</span>
+						</h2>
+						<p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+							Welcome to GymADDICT Fitness Center, where we're not just about building muscles, we're
+							about building lives. Our mission is to provide a supportive and motivating environment
+							where you can achieve your fitness goals and transform your life.
+						</p>
+						<p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+							At GymADDICT, we understand that everyone's fitness journey is unique. That's why we offer a
+							diverse range of programs and classes designed to cater to all fitness levels and interests.
+							Whether you're looking to lose weight, gain muscle, improve your flexibility, or simply
+							enhance your overall well-being, we have something for you.
+						</p>
+						<p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+							Our team of certified trainers is committed to helping you succeed. They'll work closely
+							with you to develop personalized workout plans, offer guidance on proper technique, and
+							provide the motivation you need to stay on track. Plus, our modern facilities are equipped
+							with the latest fitness equipment, ensuring that you have everything you need to reach your
+							full potential.
+						</p>
+						<p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+							But GymADDICT is more than just a gym; it's a community. Here, you'll find support,
+							encouragement, and camaraderie as you work towards your fitness goals alongside like-minded
+							individuals. Whether you're sweating it out in a group fitness class or hitting the weights
+							solo, you'll always feel part of something bigger at GymADDICT.
+						</p>
+						<p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+							So why wait? Join us today and take the first step towards a healthier, happier you. Whether
+							you're a fitness enthusiast or a complete beginner, you'll find everything you need to
+							succeed at GymADDICT Fitness Center.
+						</p>
+						<a href="about" class="btn btn-primary"
+							style="background-color: #007bff; border: none; padding: 0.75rem 1.5rem; transition: background-color 0.3s ease; color: #fff; font-size: 1rem; text-decoration: none; display: inline-block; margin-top: 1rem;">Read
+							More</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+
+	<footer style="background-color: rgb(0, 0, 0); color: #fff; padding: 20px; text-align: center;">
+		<div class="container"
+			style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+
+			<!-- Quick Contact -->
+			<div class="quick-contact" style="flex: 1; min-width: 200px; margin: 10px;">
+				<h3 id="contact" style="color: white; margin-bottom: 15px; font-weight: bold;">Quick Contact</h3>
+				<form th:action="@{/contact}" method="post">
+					<input type="email" name="email" placeholder="Enter Email"
+						style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 5px; border: none;"
+						required>
+					<textarea name="message" placeholder="Enter Message"
+						style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 5px; border: none; height: 60px;"
+						required></textarea>
+					<button type="submit"
+						style="background-color: red; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Send
+						Message</button>
+				</form>
+				<div th:if="${message}" class="alert alert-success" role="alert">
+					<p th:text="${message}"></p>
+				</div>
+			</div>
+
+			<!-- Latest News -->
+			<div class="latest-news" style="flex: 1; min-width: 200px; margin: 10px;">
+				<h3 style="color: white; margin-bottom: 15px; font-weight: bold;">Trending Blogs</h3>
+				<ul style="list-style-type: none; padding: 0;">
+					<li><a href="/nutritonTips"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Top 10 Gym
+							Workouts</a></li>
+					<li><a href="/yogaForBeginners"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Yoga for
+							Beginners</a></li>
+					<li><a href="/cardioWorkout"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Effective
+							Cardio Workouts</a></li>
+					<!-- Add more news items as needed -->
+				</ul>
+			</div>
+
+			<!-- Useful Links -->
+			<div class="useful-links" style="flex: 1; min-width: 200px; margin: 10px;">
+				<h3 style="color: white; margin-bottom: 15px; font-weight: bold;">Useful Links</h3>
+				<ul style="list-style-type: none; padding: 0;">
+					<li><a href="#membership"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Pricing</a>
+					</li>
+					<li><a href="#"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Privacy
+							Policy</a></li>
+					<li><a href="#"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Terms of
+							Service</a></li>
+					<!-- Add more useful links as needed -->
+				</ul>
+			</div>
+
+			<!-- Opening Hours -->
+			<div class="opening-hours" style="flex: 1; min-width: 200px; margin: 10px;">
+				<h3 style="color: white; margin-bottom: 15px; font-weight: bold;">Opening Hours</h3>
+				<p>Monday - Thursday: 4:00 am - 10:00 pm</p>
+				<p>Friday - Saturday: 5:00 am - 11:00 pm</p>
+				<p>Sunday : Closed</p>
+			</div>
+
+			<!-- Partition Line -->
+			<div style="width: 100%; margin: 20px 0;">
+				<hr style="border: 1px solid #ff5733;">
+			</div>
+
+			<!-- Subscribe -->
+			<div class="subscription"
+				style="flex: 1; min-width: 200px; margin: 10px; display: flex; justify-content: space-between;">
+				<div style="flex: 1;">
+					<div style="display: flex; gap: 10px;">
+						<input type="email" placeholder="Your email"
+							style="width: 70%; padding: 10px; border-radius: 5px; border: none;">
+						<button type="submit"
+							style="background-color: red; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Subscribe</button>
+					</div>
+				</div>
+
+				<!-- Social Media Icons -->
+				<div class="social-media" style="flex: 0 1 auto; min-width: 200px; margin: 10px;">
+					<h3 style="color: white; margin-bottom: 15px;">Follow Us</h3>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-youtube"></i></a>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-google-plus-g"></i></a>
+				</div>
+			</div>
+		</div>
+
+		<p style="margin-top: 20px;">&copy; 2024 GymADDICT Fitness Center. All rights reserved.</p>
+	</footer>
+
+
+</body>
+
+</html>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

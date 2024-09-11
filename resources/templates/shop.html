@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Shop</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+	<style>
+		.navbar-brand {
+			font-weight: bold;
+		}
+
+		.navbar-text {
+			color: #ff5733;
+		}
+
+		.nav-link {
+			font-weight: bold;
+		}
+
+		.nav-link:hover {
+			transform: scale(1.2);
+		}
+
+		.navbar {
+			background-color: black;
+		}
+
+		.shop-header {
+			text-align: center;
+			margin-bottom: 2rem;
+			color: rgb(48, 45, 45);
+		}
+
+		.shop-header h1 {
+			font-size: 3rem;
+			font-weight: 700;
+		}
+
+		.shop-header p {
+			color: #555;
+		}
+
+		.sidebar {
+			background-color: rgb(39, 37, 37);
+			padding: 1rem;
+			height: 100vh;
+			position: sticky;
+			top: 0;
+		}
+
+		.sidebar a {
+			display: block;
+			padding: 0.5rem 0;
+			font-size: 1.1rem;
+		}
+
+		.product-item {
+			background: linear-gradient(145deg, #ffffff, #f0f0f0);
+			border-radius: 15px;
+			padding: 20px;
+			box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+			transition: all 0.3s ease;
+			text-align: center;
+			height: 500px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.product-item:hover {
+			transform: scale(1.05);
+			box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+		}
+
+		.product-image {
+			max-height: 220px;
+			width: 100%;
+			object-fit: cover;
+			border-radius: 12px;
+			margin-bottom: 15px;
+			transition: transform 0.3s ease;
+		}
+
+		.product-item:hover .product-image {
+			transform: scale(1.1);
+		}
+
+		.product-info {
+			padding: 10px 0;
+		}
+
+		.product-title {
+			font-size: 1.4rem;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 5px;
+		}
+
+		.product-details {
+			font-size: 1rem;
+			color: #666;
+			margin-bottom: 10px;
+		}
+
+		.product-pricing {
+			font-size: 1.2rem;
+			font-weight: bold;
+			color: #000;
+			margin-bottom: 10px;
+		}
+
+		.current-price {
+			color: #ff5733;
+			font-size: 1.5rem;
+		}
+
+		.original-price {
+			text-decoration: line-through;
+			color: #888;
+			font-size: 1rem;
+			margin-left: 10px;
+		}
+
+		.product-actions {
+			margin-top: auto;
+		}
+
+		.add-to-cart-btn {
+			background-color: #ff5733;
+			color: #fff;
+			border: none;
+			padding: 12px 25px;
+			font-size: 1.1rem;
+			font-weight: 600;
+			border-radius: 30px;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 10px rgba(255, 87, 51, 0.3);
+		}
+
+		.add-to-cart-btn:hover {
+			background-color: #e64a19;
+			box-shadow: 0 6px 15px rgba(255, 87, 51, 0.5);
+		}
+
+		hr {
+			width: 100%;
+			border: 0;
+			height: 1px;
+			background-color: #ddd;
+		}
+
+		.product-details .subcategory  {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			width: 100%;
+			/* Ensures it stays within the container width */
+			display: block;
+			/* Ensures it's treated as a block element */
+		}
+		.product-details .description  {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			width: 100%;
+			/* Ensures it stays within the container width */
+			display: block;
+			/* Ensures it's treated as a block element */
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
+		<a class="navbar-brand">GYM<span style="color: #ff5733;">ADDICT</span></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/add">Sell Product</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/cart"><i class="fas fa-cart-plus"></i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/order-history">Order</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/profile">Profile</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<!-- Sidebar -->
+			<nav class="col-md-2 d-none d-md-block sidebar">
+				<h5 style="font-weight: bold; color: #f8f9fa;">Categories</h5>
+				<a href="/shop/gym-equipment" style="color: #f8f9fa;">Gym Equipment</a>
+				<a href="/shop/gym-wear" style="color: #f8f9fa;">Gym Wear</a>
+				<a href="/shop/supplements" style="color: #f8f9fa;">Supplements</a>
+				<a href="/shop/shoes" style="color: #f8f9fa;">Shoes</a>
+			</nav>
+			<!-- Main Content -->
+			<main class="col-md-10">
+				<div class="shop-header">
+					<h1>Welcome<span style="color: #ff5733;"> To</span> Our<span style="color: #ff5733;"> Shop</span>
+					</h1>
+					<p style="font-weight: bold;">Find everything you need for your fitness journey</p>
+				</div>
+				<div style="width: 100%; margin: 20px 0;">
+					<hr style="border: 1px solid #ff5733;">
+				</div>
+				<div class="row" id="product-list">
+					<div th:each="product : ${products}" class="col-md-4">
+						<div class="product-item">
+							<a th:href="@{/product/{id}(id=${product.id})}">
+								<img th:src="@{'/uploads/' + ${product.img}}" th:alt="${product.title}"
+									class="product-image" />
+							</a>
+							<div class="product-info">
+								<!-- Product Title -->
+								<!--<h3 class="product-title" th:text="${product.title}"></h3>-->
+								<!-- Divider -->
+								<hr />
+								<!-- Subcategory & Brand -->
+								<div class="product-details">
+
+									<span class="brand" style="font-weight: bold;"
+										th:text="${product.brands}">Nike</span>
+										<span class="product-title" th:text="${product.title}"></span>
+								</div>
+								<div class="product-details">
+									<span class="subcategory" th:text="${product.subCategory}">Mens Regular
+										T-shirts</span>
+								</div>
+							<!--	<div class="product-details">
+
+									<span class="description" th:text="${product.description}"></span>
+
+								</div>-->
+								<!-- Price Section -->
+								<div class="product-pricing">
+									<span class="current-price" th:text="'₹' + ${product.price}"></span>
+									<span class="original-price" th:text="'₹' + ${product.discountPrice}"></span>
+								</div>
+							</div>
+							<!-- Add to Cart Button -->
+							<div class="product-actions">
+								<form th:action="@{/cart/add}" method="post">
+									<input type="hidden" name="id" th:value="${product.id}">
+									<button type="submit" class="btn btn-primary add-to-cart-btn">
+										<i class="fas fa-cart-plus"></i> Add to Cart
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+	<!--<script>
+    function showCategory(category) {
+        const productList = document.getElementById('product-list');
+        productList.innerHTML = '';
+
+        const filteredProducts = /*[[${products}]]*/ []; // Thymeleaf will replace this with actual data.
+        const categoryProducts = filteredProducts.filter(product => product.category === category);
+        categoryProducts.forEach(product => {
+            const productItem = document.createElement('div');
+            productItem.className = 'col-md-4';
+            productItem.innerHTML = `
+                <div class="product-item">
+                    <img src="@{'/uploads/' + ${product.img}}"  alt="${product.title}" />
+                    <div class="product-title">${product.title}</div>
+                    <p class="product-price">${product.price}</p>
+                    <button class="btn btn-primary" onclick="addToCart('${product.title}', '${product.price}', '${product.img}')">Add to Cart</button>
+                </div>
+            `;
+            productList.appendChild(productItem);
+        });
+    }
+</script>-->
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+         .navbar-brand {
+            font-weight: bold;
+        }
+        .navbar-text {
+            color: #ff5733;
+        }
+        .nav-link {
+            font-weight: bold;
+        }
+        .nav-link:hover {
+            transform: scale(1.2);
+        }
+        .navbar {
+            background-color: black;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .container{
+		border-radius: 10px;
+		 background-color: white;
+		margin-top: 2rem;
+		box-shadow: 0 4px 8px black;
+		padding: 2rem;
+		transition: transform 0.3s;
+		}
+		 .btn-primary {
+            background-color: #ff5733;
+            border: none;
+            align-items: center;
+        }
+        .btn-primary:hover {
+            background-color: #ff2a00;
+        }
+    </style>
+</head>
+<body>
+	 <nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
+        <a class="navbar-brand">GYM<span style="color: #ff5733;">ADDICT</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/add">Sell Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/order">Order</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5" >
+        <h2>Edit Product</h2>
+        <form th:action="@{/edit/{id}(id=${product.id})}" th:object="${product}" method="post" enctype="multipart/form-data">
+            <!-- Hidden field for product ID -->
+            <input type="hidden" th:field="*{id}">
+            
+            <!-- Title -->
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" th:field="*{title}" required>
+            </div>
+            
+            <!-- Description -->
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" rows="5" th:field="*{description}" required></textarea>
+            </div>
+            
+            <!-- Price -->
+            <div class="form-group">
+                <label>Price</label>
+                <input type="number" class="form-control" th:field="*{price}" required>
+            </div>
+            
+            <!-- Discount Price -->
+            <div class="form-group">
+                <label>Discount Price</label>
+                <input type="number" class="form-control" th:field="*{discountPrice}">
+            </div>
+            
+            <!-- Size -->
+            <div class="form-group">
+                <label>Size</label>
+                <input type="text" class="form-control" th:field="*{size}">
+            </div>
+            
+            <!-- Category -->
+            
+            <div class="form-group">
+            <label for="category">Category:</label>
+            <select class="form-control" id="category" name="category" th:field="*{category}" required>
+                <option value="gym-equipment">Gym Equipment</option>
+                <option value="gym-wear">Gym Wear</option>
+                <option value="supplements">Supplements</option>
+                <option value="shoes">Shoes</option>
+                <!-- Add more categories as needed -->
+            </select>
+        </div>
+            
+            <!-- Image 1 -->
+         <div class="row">
+            
+            <div class="form-group">
+                <label>Image 1</label>
+                <input type="file" class="form-control-file" name="image">
+                <img th:src="@{'/uploads/' + ${product.img}}" class="mt-2" style="max-height: 200px;">
+            
+           </div>
+            
+            <!-- Image 2 -->
+           <div class="col-md-4">
+            <div class="form-group">
+                <label>Image 2</label>
+                <input type="file" class="form-control-file" name="image2">
+                <img th:src="@{'/uploads/' + ${product.img2}}" class="mt-2" style="max-height: 200px;">
+            </div>
+           </div>
+            
+            <!-- Image 3 -->
+            
+            <div class="form-group">
+                <label>Image 3</label>
+                <input type="file" class="form-control-file" name="image3">
+                <img th:src="@{'/uploads/' + ${product.img3}}" class="mt-2" style="max-height: 200px;">
+           
+             </div>
+              
+          <!--  <div class="form-group">
+                <label>Image 3</label>
+                <input type="file" class="form-control-file" name="image3">
+                <img th:src="@{'/uploads/' + ${product.img3}}" class="mt-2" style="max-height: 200px;">
+            </div>-->
+          </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</body>
+</html>

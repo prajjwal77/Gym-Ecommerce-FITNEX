@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymADDICT Fitness Center - Register</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background-color: #111;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .navbar-text {
+            color: #ff5733;
+        }
+
+        .navbar-transparent {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #2c3e50;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #ecf0f1;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .social-buttons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 30%;
+        }
+
+        .social-buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        .social-buttons i {
+            margin-right: 10px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
+        <a class="navbar-brand" href="#">GYM<span style="color: #ff5733;">ADDICT</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#classes">Classes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Subscription</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Profile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Register Section -->
+    <div class="container mt-5">
+        <h2>Register</h2>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" th:field="*{fullName}" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" th:field="*{email}" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" th:field="*{password}" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+
+        <div class="social-buttons">
+            <a href="/oauth2/authorization/google" style="background-color: #db4a39;"> 
+                <i class="fab fa-google"></i> Register with Google
+            </a>
+            <a href="/oauth2/authorization/facebook" style="background-color: #3b5998;">
+                <i class="fab fa-facebook-f"></i> Register with Facebook
+            </a>
+            <a href="/oauth2/authorization/twitter" style="background-color: #1da1f2;">
+                <i class="fab fa-twitter"></i> Register with Twitter
+            </a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

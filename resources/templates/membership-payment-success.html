@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .success-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .success-title {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        .btn-home {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-container">
+            <h2 class="success-title">Payment Successful!</h2>
+            <p>You have successfully purchased the <span th:text="${planName}"></span> plan.</p>
+            <p>Your membership starts on: <span th:text="${membershipStartDate}"></span></p>
+            <p>Your membership ends on: <span th:text="${membershipEndDate}"></span></p>
+            <a href="/" class="btn btn-primary btn-home">Go to Home</a>
+        </div>
+    </div>
+</body>
+</html>

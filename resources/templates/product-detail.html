@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+		
+			body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			
+		}
+		.navbar-brand {
+			font-weight: bold;
+		}
+
+		.navbar-text {
+			color: #ff5733;
+		}
+
+		.nav-link {
+			font-weight: bold;
+		}
+
+		.nav-link:hover {
+			transform: scale(1.2);
+		}
+
+		.navbar {
+			background-color: rgb(0, 0, 0);
+		}
+        .product-img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .thumbnail-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .discount-price {
+            color: red;
+            text-decoration: line-through;
+        }
+        .final-price {
+            color: green;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .review {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .size-selector {
+            margin-top: 10px;
+        }
+        .add-to-cart {
+            margin-top: 20px;
+        }
+        .btn-add-to-cart {
+            background-color: rgb(255, 128, 64);
+            color: white;
+            border: none;
+        }
+        .btn-add-to-cart:hover {
+            background-color: rgb(255, 128, 0);
+            color: white;
+        }
+        .btn-buy-now {
+            background-color: rgb(0, 128, 192);
+            color: white;
+            border: none;
+        }
+        .btn-buy-now:hover {
+            background-color: rgb(0, 64, 128);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">GYM<span style="color: #ff5733;">ADDICT</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/add">Sell Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/order">Order</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Main Product Image -->
+                <img id="mainProductImg" th:src="@{'/uploads/' + ${product.img}}" class="product-img" alt="Product Image" data-toggle="modal" data-target="#imageModal">
+                <!-- Thumbnails -->
+                <div class="d-flex mt-3">
+                    <img th:src="@{'/uploads/' + ${product.img}}" class="thumbnail-img mr-2" alt="Product Image" onclick="changeImage(this)">
+                    <img th:src="@{'/uploads/' + ${product.img2}}" class="thumbnail-img mr-2" alt="Additional Image 1" th:if="${product.img2}" onclick="changeImage(this)">
+                    <img th:src="@{'/uploads/' + ${product.img3}}" class="thumbnail-img mr-2" alt="Additional Image 2" th:if="${product.img3}" onclick="changeImage(this)">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Product Title -->
+                
+                <h3 class="final-brands" style="font-weight: bold;" th:text=" ${product.brands}"></h3>
+                <h5 th:text="${product.title}"></h5>
+                <p class="final-subCategory" th:text="${product.subCategory}"></p>
+                <p th:text="${product.description}"></p>
+                <!-- Regular Price -->
+                <div ><span class="final-price" th:text="'₹' + ${product.price}"></span> <span class="discount-price" th:text="'₹' + ${product.discountPrice}"></span></div>
+                <!-- Product Description -->
+                 
+
+                <!-- Add to Cart and Buy Now Buttons -->
+                <div class="add-to-cart mt-3">
+                    <form action="/cart/add" method="post">
+                        <input type="hidden" name="id" th:value="${product.id}">
+                        <button type="submit" class="btn btn-add-to-cart btn-block">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </form>
+                    <a href="/checkout" class="btn btn-buy-now btn-block mt-2">
+                        <i class="fas fa-credit-card"></i> Buy Now
+                    </a>
+                </div>
+
+                <!-- Product Reviews -->
+                <div class="mt-4">
+                    <h4>Reviews</h4>
+                    <div th:each="review : ${product.reviews}" class="review">
+                        <p th:text="${review.comment}"></p>
+                        <small th:text="'By ' + ${review.author} + ' on ' + ${#dates.format(review.date, 'dd-MM-yyyy')}"></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Product Image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalProductImg" src="" alt="Product Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(element) {
+            document.getElementById('mainProductImg').src = element.src;
+            document.getElementById('modalProductImg').src = element.src;
+        }
+
+        document.getElementById('mainProductImg').addEventListener('click', function () {
+            document.getElementById('modalProductImg').src = this.src;
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

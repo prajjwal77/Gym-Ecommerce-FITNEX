@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Purchase Membership Plan</title>
+</head>
+<body>
+    <h1 th:text="${planName}">Plan Name</h1>
+    <form th:action="@{/purchase}" method="post">
+        <input type="hidden" name="planId" th:value="${planId}">
+        <label for="duration">Select Duration:</label>
+        <select name="duration" id="duration">
+            <option value="monthly">Monthly</option>
+            <option value="three-month">Three Months</option>
+            <option value="six-month">Six Months</option>
+            <option value="yearly">Yearly</option>
+        </select><br>
+
+        <input type="hidden" name="userId" th:value="${#authentication.principal.id}">
+
+        <button type="submit">Purchase</button>
+    </form>
+</body>
+</html>

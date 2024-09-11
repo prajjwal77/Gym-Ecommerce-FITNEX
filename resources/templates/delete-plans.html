@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete Plan</title>
+</head>
+<body>
+    <h1>Delete Plan</h1>
+    <form th:action="@{/delete-plan}" method="post">
+        <label for="planId">Plan ID:</label>
+        <input type="number" id="planId" name="planId"><br>
+        <button type="submit">Delete</button>
+    </form>
+</body>
+</html>

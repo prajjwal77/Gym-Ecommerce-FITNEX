@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .order-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .order-header {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .order-details p {
+            margin: 0.5rem 0;
+        }
+        .product-image {
+            width: 100px;
+            height: auto;
+            margin-right: 1rem;
+        }
+        .product-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .product-item:last-child {
+            margin-bottom: 0;
+        }
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .product-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .btn-tracking {
+            margin-top: 1rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Order History</h2>
+        <div th:if="${orders.size() == 0}">
+            <p>You have no orders.</p>
+        </div>
+        <div th:each="order : ${orders}" class="order-card">
+            <div class="order-header">
+                Order ID: <span th:text="${order.id}"></span>
+            </div>
+            <div class="order-details">
+                <p>Order Date: <span th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd')}"></span></p>
+                <p>Expected Delivery Date: <span th:text="${#dates.format(order.deliveryDate, 'yyyy-MM-dd')}"></span></p>
+                <p>Total Price: ₹<span th:text="${order.totalPrice}"></span></p>
+                <p>Status: <span th:text="${order.status}"></span></p>
+                <h5>Items:</h5>
+                <ul>
+                    <li th:each="item : ${order.orderItems}" class="product-item">
+                        <img th:src="@{'/uploads/' + ${item.product.img}}" alt="Product Image" class="product-image">
+                        <div>
+                            <a th:href="@{/product/{id}(id=${item.product.id})}" class="product-title" th:text="${item.product.title}"></a>
+                            <p class="product-description" th:text="${item.product.description}"></p>
+                            <p><strong>Quantity:</strong> <span th:text="${item.quantity}"></span></p>
+                            <p><strong>Price:</strong> ₹<span th:text="${item.price}"></span></p>
+                        </div>
+                    </li>
+                </ul>
+                <a th:href="@{'/order/tracking/' + ${order.id}}" class="btn btn-primary btn-tracking">Track Order</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

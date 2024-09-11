@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Blogs - Gym</title>
+    <!-- Include necessary CSS files -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add custom CSS for the blog page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background-color: #111;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .navbar-text {
+            color: #ff5733;
+        }
+        .blog-page {
+            padding: 50px 0;
+        }
+        .blog-item {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background: #fff;
+        }
+        .blog-item img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .blog-content {
+            padding: 15px 0;
+        }
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .likes-comments {
+            display: flex;
+            gap: 10px;
+        }
+        .btn-like, .btn-comment {
+            cursor: pointer;
+        }
+        .header-section {
+            position: relative;
+            height: 300px; /* Adjust the height as needed */
+            background-image: url('/images/background-gym.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+        .header-section h1 {
+            font-size: 3em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        span,h3,p{
+			color: #111;
+		}
+    </style>
+</head>
+<body> 
+    <!-- Navbar and other shared components -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
+        <a class="navbar-brand">GYM<span style="color: #ff5733;">ADDICT</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blogs/add">Add Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="header-section">
+        <h1>ALL BLOGS</h1>
+    </section>
+
+    <!-- All Blogs Section -->
+  <section class="blog-page section">
+    <div class="container">
+        <div class="row">
+            <!-- Blog 1 -->
+            <div class="col-md-6 blog-item">
+                <img src="images/gymBlog2.jpg" class="card-img-top" alt="Blog Image">
+                <div class="blog-content">
+                    <h3 style="font-weight: bold;">Top 10 Gym Workouts</h3>
+                    <p>Discover the top 10 gym workouts to help you build muscle, lose weight, and stay fit...</p>
+                    <a href="/showTop10GymWorkouts" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="blog-footer">
+                    <div class="likes-comments">
+                        <span class="btn-like" data-id="1">👍 15 Likes</span>
+                        <span class="btn-comment" data-id="1">💬 Comments</span>
+                    </div>
+                    <span>June 5, 2024</span>
+                </div>
+            </div>
+            <!-- Blog 2 -->
+            <div class="col-md-6 blog-item">
+                <img src="images/nutritionblog.png" alt="Blog Image">
+                <div class="blog-content">
+                    <h3 style="font-weight: bold;">Nutrition Tips for Athletes</h3>
+                    <p>Learn about the best nutrition tips for athletes to enhance performance and recovery...</p>
+                    <a href="/nutritonTips" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="blog-footer">
+                    <div class="likes-comments">
+                        <span class="btn-like" data-id="2">👍 10 Likes</span>
+                        <span class="btn-comment" data-id="2">💬 Comments</span>
+                    </div>
+                    <span>June 5, 2024</span>
+                </div>
+            </div>
+            <!-- Blog 3 -->
+            <div class="col-md-6 blog-item">
+                <img src="images/yoga.webp" alt="Blog Image">
+                <div class="blog-content">
+                    <h3 style="font-weight: bold;">Yoga for Beginners</h3>
+                    <p>Start your yoga journey with these beginner-friendly yoga poses and tips...</p>
+                    <a href="/yogaForBeginners" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="blog-footer">
+                    <div class="likes-comments">
+                        <span class="btn-like" data-id="3">👍 20 Likes</span>
+                        <span class="btn-comment" data-id="3">💬 Comments</span>
+                    </div>
+                    <span>June 5, 2024</span>
+                </div>
+            </div>
+            <!-- Blog 4 -->
+            <div class="col-md-6 blog-item">
+                <img src="images/gymBlog1.jpg" alt="Blog Image">
+                <div class="blog-content">
+                    <h3 style="font-weight: bold;">Effective Cardio Workouts</h3>
+                    <p>Boost your cardiovascular health with these effective cardio workouts...</p>
+                    <a href="/cardioWorkout" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="blog-footer">
+                    <div class="likes-comments">
+                        <span class="btn-like" data-id="4">👍 25 Likes</span>
+                        <span class="btn-comment" data-id="4">💬 Comments</span>
+                    </div>
+                    <span>June 5, 2024</span>
+                </div>
+            </div>
+            <!-- Blog 5 -->
+            <div class="col-md-6 blog-item">
+               
+                <div class="blog-content">
+                    <h3 style="font-weight: bold;">Strength Training Basics</h3>
+                    <p>Understand the basics of strength training and how to get started...</p>
+                    <a href="/strengthTraining" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="blog-footer">
+                    <div class="likes-comments">
+                        <span class="btn-like" data-id="5">👍 30 Likes</span>
+                        <span class="btn-comment" data-id="5">💬 Comments</span>
+                    </div>
+                    <span>June 5, 2024</span>
+                </div>
+            </div>
+            <!-- Blog 6 -->
+            <div class="col-md-6 blog-item">
+                <div class="blog-content">
+                    <h3 style="font-weight: bold;">HIIT Workouts for Beginners</h3>
+                    <p>Explore high-intensity interval training (HIIT) workouts for beginners...</p>
+                    <a href="/hIITWorkoutsforBeginners" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="blog-footer">
+                    <div class="likes-comments">
+                        <span class="btn-like" data-id="6">👍 18 Likes</span>
+                        <span class="btn-comment" data-id="6">💬 Comments</span>
+                    </div>
+                    <span>June 5, 2024</span>
+                </div>
+            </div>
+            <!-- Blog 7 -->
+            <div class="col-md-6 blog-item">
+                <div class="blog-content">
+                    <h3 style="font-weight: bold;">Stretching Techniques</h3>
+                    <p>Learn about effective stretching techniques to improve flexibility...</p>
+                    <a href="/stretchingTechniques" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="blog-footer">
+                    <div class="likes-comments">
+                        <span class="btn-like" data-id="7">👍 22 Likes</span>
+                        <span class="btn-comment" data-id="7">💬 Comments</span>
+                    </div>
+                    <span>June 5, 2024</span>
+                </div>
+            </div>
+            <!-- Blog 8 -->
+            <div class="col-md-6 blog-item">
+                <div class="blog-content">
+                    <h3 style="font-weight: bold;">Workout Plans for Women</h3>
+                    <p>Check out these effective workout plans specifically designed for women...</p>
+                    <a href="/workoutPlansforWomen" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="blog-footer">
+                    <div class="likes-comments">
+                        <span class="btn-like" data-id="8">👍 17 Likes</span>
+                        <span class="btn-comment" data-id="8">💬 Comments</span>
+                    </div>
+                    <span>June 5, 2024</span>
+                </div>
+            </div>
+            <!-- Blog 9 -->
+            <div class="col-md-6 blog-item">
+                <div class="blog-content">
+                    <h3 style="font-weight: bold;">Post-Workout Nutrition</h3>
+                    <p>Discover the best post-workout nutrition strategies to maximize recovery...</p>
+                    <a href="/postWorkoutNutrition" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="blog-footer">
+                    <div class="likes-comments">
+                        <span class="btn-like" data-id="9">👍 20 Likes</span>
+                        <span class="btn-comment" data-id="9">💬 Comments</span>
+                    </div>
+                    <span>June 5, 2024</span>
+                </div>
+            </div>
+            <!-- Blog 10 -->
+            <div class="col-md-6 blog-item">
+                <div class="blog-content">
+                    <h3 style="font-weight: bold;">Home Gym Essentials</h3>
+                    <p>Learn about the essential equipment you need for a home gym setup...</p>
+                    <a href="/homeGymEssentials" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="blog-footer">
+                    <div class="likes-comments">
+                        <span class="btn-like" data-id="10">👍 15 Likes</span>
+                        <span class="btn-comment" data-id="10">💬 Comments</span>
+                    </div>
+                    <span>June 5, 2024</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer and scripts -->
+      <!-- Footer -->
+  <footer style="background-color: rgb(0, 0, 0); color: #fff; padding: 20px; text-align: center;">
+    <div class="container" style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+        
+        <!-- Quick Contact -->
+        <div class="quick-contact" style="flex: 1; min-width: 200px; margin: 10px;">
+            <h3 id="contact" style="color: white; margin-bottom: 15px;">Quick Contact</h3>
+            <input type="email" placeholder="Enter Email" style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 5px; border: none;">
+            <textarea placeholder="Enter Message" style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 5px; border: none; height: 60px;"></textarea>
+            <button type="submit" style="background-color: red; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Send Message</button>
+        </div>
+
+        <!-- Latest News -->
+        <div class="latest-news" style="flex: 1; min-width: 200px; margin: 10px;">
+            <h3 style="color: white; margin-bottom: 15px;">Latest News</h3>
+            <ul style="list-style-type: none; padding: 0;">
+                <li><a href="#" style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">News Item 1</a></li>
+                <li><a href="#" style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">News Item 2</a></li>
+                <li><a href="#" style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">News Item 3</a></li>
+                <!-- Add more news items as needed -->
+            </ul>
+        </div>
+
+        <!-- Useful Links -->
+        <div class="useful-links" style="flex: 1; min-width: 200px; margin: 10px;">
+            <h3 style="color: white; margin-bottom: 15px;">Useful Links</h3>
+            <ul style="list-style-type: none; padding: 0;">
+                <li><a href="#" style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Pricing</a></li>
+                <li><a href="#" style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Privacy Policy</a></li>
+                <li><a href="#" style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Terms of Service</a></li>
+                <!-- Add more useful links as needed -->
+            </ul>
+        </div>
+
+        <!-- Opening Hours -->
+        <div class="opening-hours" style="flex: 1; min-width: 200px; margin: 10px;">
+            <h3 style="color: white; margin-bottom: 15px;">Opening Hours</h3>
+            <p style="color: white;">Monday - Thursday: 4:00 am - 10:00 pm</p>
+            <p style="color: white;">Friday - Saturday: 5:00 am - 11:00 pm</p>
+            <p style="color: white;">Sunday : Closed</p>
+        </div>
+
+        <!-- Partition Line -->
+        <div style="width: 100%; margin: 20px 0;">
+            <hr style="border: 1px solid #ff5733;">
+        </div>
+
+        <!-- Subscribe -->
+        <div class="subscription" style="flex: 1; min-width: 200px; margin: 10px; display: flex; justify-content: space-between;">
+            <div style="flex: 1;">
+                <div style="display: flex; gap: 10px;">
+                    <input type="email" placeholder="Your email" style="width: 70%; padding: 10px; border-radius: 5px; border: none;">
+                    <button type="submit" style="background-color: red; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Subscribe</button>
+                </div>
+            </div>
+
+            <!-- Social Media Icons -->
+            <div class="social-media" style="flex: 0 1 auto; min-width: 200px; margin: 10px;">
+                <h3 style="color: white; margin-bottom: 15px;">Follow Us</h3>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-youtube"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-google-plus-g"></i></a>
+            </div>
+            
+        </div>
+    </div>
+
+    <p style="margin-top: 20px; color: white;">&copy; 2024 GymADDICT Fitness Center. All rights reserved.</p>
+</footer>
+
+
+    <script>
+        // JavaScript for handling like and comment actions
+        document.querySelectorAll('.btn-like').forEach(button => {
+            button.addEventListener('click', () => {
+                const blogId = button.getAttribute('data-id');
+                fetch(`/blogs/like/${blogId}`, {
+                    method: 'POST'
+                }).then(response => response.text())
+                .then(data => {
+                    button.innerText = data;
+                });
+            });
+        });
+
+        document.querySelectorAll('.btn-comment').forEach(button => {
+            button.addEventListener('click', () => {
+                const blogId = button.getAttribute('data-id');
+                const comment = prompt('Enter your comment:');
+                if (comment) {
+                    fetch(`/blogs/comment/${blogId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: new URLSearchParams({ comment })
+                    }).then(response => response.text())
+                    .then(data => {
+                        alert(data);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

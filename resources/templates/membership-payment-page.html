@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Payment Page</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		body {
+			background-color: #f8f9fa;
+		}
+
+		.payment-container {
+			background-color: #fff;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			padding: 30px;
+			margin-top: 50px;
+			text-align: center;
+		}
+
+		.payment-title {
+			color: #007bff;
+			margin-bottom: 20px;
+		}
+
+		.payment-details {
+			font-size: 1.1rem;
+			color: #6c757d;
+			margin-bottom: 20px;
+		}
+
+		.btn-confirm {
+			margin-top: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="payment-container">
+			<h2 class="payment-title">Payment Details</h2>
+			<div class="payment-details">
+				<p>Plan: <span th:text="${planName}"></span></p>
+				<form th:action="@{/confirm-purchase}" method="post">
+					<input type="hidden" name="planId" th:value="${planId}">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="selectedPlan" id="monthly" value="monthly"
+							required>
+						<label class="form-check-label" for="monthly">
+							Monthly Price: ₹<span th:text="${monthlyPrice}"></span>
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="selectedPlan" id="threeMonth"
+							value="threeMonth" required>
+						<label class="form-check-label" for="threeMonth">
+							Three Month Price: ₹<span th:text="${threeMonthPrice}"></span>
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="selectedPlan" id="sixMonth" value="sixMonth"
+							required>
+						<label class="form-check-label" for="sixMonth">
+							Six Month Price: ₹<span th:text="${sixMonthPrice}"></span>
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="selectedPlan" id="yearly" value="yearly"
+							required>
+						<label class="form-check-label" for="yearly">
+							Yearly Price: ₹<span th:text="${yearlyPrice}"></span>
+						</label>
+					</div>
+					<form th:action="@{/confirm-purchase}" method="post">
+						<input type="hidden" name="planId" th:value="${planId}">
+						<!-- Other form fields -->
+						<button type="submit" class="btn btn-success btn-confirm">Confirm Purchase</button>
+					</form>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
