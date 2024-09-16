@@ -141,6 +141,21 @@
 		.trainer-card:hover {
 			transform: scale(1.05);
 		}
+		.class-card {
+			position: relative;
+			height: auto;
+			overflow: hidden;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px grey;
+			transition: transform 0.3s;
+			margin-bottom: 20px;
+		}
+
+		.class-card:hover {
+			transform: scale(1.05);
+			text-decoration: #ff5733;
+		}
+
 
 		.image-wrapper {
 			position: relative;
@@ -149,7 +164,7 @@
 			overflow: hidden;
 			/* Hide overflow to crop the image */
 		}
-
+		
 		.image-wrapper-trainers {
 			position: relative;
 			height: 350px;
@@ -192,6 +207,33 @@
 		}
 
 		.trainer-details .description {
+			margin-top: 10px;
+			color: #666;
+		}
+		.class-name {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			color: #fff;
+			padding: 10px;
+			font-size: 1.5em;
+			text-align: center;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+
+		.class-details {
+			padding: 15px;
+			text-align: center;
+		}
+
+		.class-details p {
+			margin: 0;
+		}
+
+		.class-details .description {
 			margin-top: 10px;
 			color: #666;
 		}
@@ -351,6 +393,20 @@
 		.plan-card .btn-select:hover {
 			background-color: #0056b3;
 		}
+		    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-20px);
+        }
+        60% {
+            transform: translateY(-10px);
+        }
+    }
+	.class-link .description:hover{
+	 text-decoration: underline;
+	}
 	</style>
 </head>
 
@@ -624,140 +680,136 @@
 	</section>
 
 	<!-- Classes Section -->
-	<section id="classes" class="section bg-color-3 padding-120">
-		<div class="container">
-
-			<div class="row">
-				<div class="col-md-12">
-					<div class="section-title white">
-						<h2 style="font-size: 2.5rem; font-weight: 700; color: #007bff; margin-bottom: 1.5rem;">OUR
-							<span style="color: #ff5733;">CLASSES</span>
-						</h2>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-12">
-						<div id="featured-classes-carousel" class="carousel slide" data-ride="carousel">
-							<!-- Wrapper for slides -->
-							<div class="carousel-inner">
-								<!-- Slide 1 -->
-								<div class="carousel-item active">
-									<div class="row">
-										<!-- Featured Class 1 -->
-										<div class="col-md-4">
-											<div class="class-item trainer-card">
-												<div class="image-wrapper">
-													<img src="/images/yoga.webp" class="img-fluid cropped-image"
-														alt="Class 1">
-													<div class="trainer-name">YOGA</div>
-												</div>
-												<div class="content trainer-details">
-													<p class="description">Discover a Harmony of Body, Mind, and Spirit
-														as You Find Your Inner Balance Through Graceful Poses and Deep
-														Breathing Techniques.</p>
-												</div>
-											</div>
-										</div>
-										<!-- Featured Class 2 -->
-										<div class="col-md-4">
-											<div class="class-item trainer-card">
-												<div class="image-wrapper">
-													<img src="/images/builder.jpg" class="img-fluid cropped-image"
-														alt="Class 2">
-													<div class="trainer-name">Body Building</div>
-												</div>
-												<div class="content trainer-details">
-													<p class="description">Transform Your Body and Unleash Your Inner
-														Strength with Intense Workouts Designed to Build Muscle, Define
-														Your Physique, and Boost Your Confidence.</p>
-												</div>
-											</div>
-										</div>
-										<!-- Featured Class 3 -->
-										<div class="col-md-4">
-											<div class="class-item trainer-card">
-												<div class="image-wrapper">
-													<img src="/images/gymBlog1.jpg" class="img-fluid cropped-image"
-														alt="Class 3">
-													<div class="trainer-name">CARDIO</div>
-												</div>
-												<div class="content trainer-details">
-													<p class="description">Ignite Your Cardiovascular System and Enhance
-														Your Endurance as You Engage in Heart-Pumping Activities
-														Tailored to Elevate Your Heart Health and Stamina.</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<!-- Slide 2 -->
-								<div class="carousel-item">
-									<div class="row">
-										<!-- Featured Class 4 -->
-										<div class="col-md-4">
-											<div class="class-item trainer-card">
-												<div class="image-wrapper">
-													<img src="/images/cycling.jpg" class="img-fluid cropped-image"
-														alt="Class 4">
-													<div class="trainer-name">Cycling</div>
-												</div>
-												<div class="content trainer-details">
-													<p class="description">Embark on an Adventure of Fitness and Fun as
-														You Pedal Your Way to Total Body Wellness, Strengthening Muscles
-														and Burning Calories with Every Spin of the Wheel.</p>
-												</div>
-											</div>
-										</div>
-										<!-- Featured Class 5 -->
-										<div class="col-md-4">
-											<div class="class-item trainer-card">
-												<div class="image-wrapper">
-													<img src="/images/meditation.jpg" class="img-fluid cropped-image"
-														alt="Class 5">
-													<div class="trainer-name">Meditation</div>
-												</div>
-												<div class="content trainer-details">
-													<p class="description">Embark on a Journey of Self-Discovery and
-														Inner Peace as You Quiet Your Mind, Center Your Spirit, and
-														Renew Your Energy Through the Ancient Practice of Meditation.
-													</p>
-												</div>
-											</div>
-										</div>
-										<!-- Featured Class 6 -->
-										<div class="col-md-4">
-											<div class="class-item trainer-card">
-												<div class="image-wrapper">
-													<img src="/images/running.jpeg" class="img-fluid cropped-image"
-														alt="Class 6">
-													<div class="trainer-name">Running</div>
-												</div>
-												<div class="content trainer-details">
-													<p class="description">Experience the Freedom of Movement and the
-														Joy of Achievement as You Lace Up Your Shoes and Hit the
-														Pavement, Running Your Way to Improved Health, Mental Clarity,
-														and Happiness.</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Indicators -->
-							</br>
-							</br>
-							<ul class="carousel-indicators">
-								<li data-target="#featured-classes-carousel" data-slide-to="0" class="active"></li>
-								<li data-target="#featured-classes-carousel" data-slide-to="1"></li>
-							</ul>
-						</div>
-					</div>
+	<!-- Classes Section -->
+<section id="classes" class="section bg-color-3 padding-120">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-title white text-center">
+					<h2 style="font-size: 2.5rem; font-weight: 700; color: #007bff;">OUR 
+						<span style="color: #ff5733;">CLASSES</span>
+					</h2>
+					<p style="color: #fff; font-size: 1.2rem;">Explore Our Range of Classes Tailored to Help You Achieve Your Fitness Goals</p>
 				</div>
 			</div>
-	</section>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div id="featured-classes-carousel" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<!-- Slide 1 -->
+						<div class="carousel-item active">
+							<div class="row">
+								<!-- Class 1: Yoga -->
+								<div class="col-md-4">
+									<a href="/class/yoga" class="class-link">
+										<div class="class-item class-card">
+											<div class="image-wrapper">
+												<img src="/images/yoga.webp" class="img-fluid cropped-image" alt="Yoga Class">
+												<div class="class-name">YOGA</div>
+											</div>
+											<div class="content class-details">
+												<p class="description">Find Your Inner Balance Through Graceful Poses and Deep Breathing Techniques.</p>
+											</div>
+										</div>
+									</a>
+								</div>
+
+								<!-- Class 2: Body Building -->
+								<div class="col-md-4">
+									<a href="/class/bodybuilding" class="class-link">
+										<div class="class-item class-card">
+											<div class="image-wrapper">
+												<img src="/images/builder.jpg" class="img-fluid cropped-image" alt="Body Building">
+												<div class="class-name">BODY BUILDING</div>
+											</div>
+											<div class="content class-details">
+												<p class="description">Transform Your Body with Workouts Designed to Build Muscle and Boost Confidence.</p>
+											</div>
+										</div>
+									</a>
+								</div>
+
+								<!-- Class 3: Cardio -->
+								<div class="col-md-4">
+									<a href="/class/cardio" class="class-link">
+										<div class="class-item class-card">
+											<div class="image-wrapper">
+												<img src="/images/gymBlog1.jpg" class="img-fluid cropped-image" alt="Cardio">
+												<div class="class-name">CARDIO</div>
+											</div>
+											<div class="content class-details">
+												<p class="description">Boost Your Endurance and Cardio Health with Heart-Pumping Activities.</p>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- Slide 2 -->
+						<div class="carousel-item">
+							<div class="row">
+								<!-- Class 4: Cycling -->
+								<div class="col-md-4">
+									<a href="/class/cycling" class="class-link">
+										<div class="class-item class-card">
+											<div class="image-wrapper">
+												<img src="/images/cycling.jpg" class="img-fluid cropped-image" alt="Cycling">
+												<div class="class-name">CYCLING</div>
+											</div>
+											<div class="content class-details">
+												<p class="description">Strengthen Muscles and Burn Calories with Every Spin of the Wheel.</p>
+											</div>
+										</div>
+									</a>
+								</div>
+
+								<!-- Class 5: Meditation -->
+								<div class="col-md-4">
+									<a href="/class/meditation" class="class-link">
+										<div class="class-item class-card">
+											<div class="image-wrapper">
+												<img src="/images/meditation.jpg" class="img-fluid cropped-image" alt="Meditation">
+												<div class="class-name">MEDITATION</div>
+											</div>
+											<div class="content class-details">
+												<p class="description">Renew Your Energy Through the Ancient Practice of Meditation.</p>
+											</div>
+										</div>
+									</a>
+								</div>
+
+								<!-- Class 6: Running -->
+								<div class="col-md-4">
+									<a href="/class/running" class="class-link">
+										<div class="class-item class-card">
+											<div class="image-wrapper">
+												<img src="/images/running.jpeg" class="img-fluid cropped-image" alt="Running">
+												<div class="class-name">RUNNING</div>
+											</div>
+											<div class="content class-details">
+												<p class="description">Experience Freedom and Joy as You Run Toward Health and Happiness.</p>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Carousel Indicators -->
+					<ul class="carousel-indicators">
+						<li data-target="#featured-classes-carousel" data-slide-to="0" class="active"></li>
+						<li data-target="#featured-classes-carousel" data-slide-to="1"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 
 	<!-- Trainer Section -->
 
@@ -914,59 +966,62 @@
 
 	<!-- About Us Section -->
 	<section id="about" class="section about" style="padding: 5rem 0; background-color: #111">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-6 mb-4 mb-lg-0">
-					<img src="/images/about.avif" class="img-fluid about-image" alt="About Image"
-						style="border-radius: 10px; box-shadow: 0 0 10px grey; transition: transform 0.3s ease;">
-					<img src="/images/about2.jpg" class="img-fluid about-image" alt="About Image"
-						style="border-radius: 10px; box-shadow: 0 0 10px grey; transition: transform 0.3s ease;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <!-- New Content with Animated Icons or Video -->
+                <div class="about-visual" style="display: flex; flex-direction: column; align-items: center;">
+                    <!-- Example of an Animated Icon using Lottie or CSS -->
+                    <div class="icon-wrapper" style="margin-bottom: 2rem;">
+                        <i class="fas fa-dumbbell" style="font-size: 5rem; color: #007bff; animation: bounce 2s infinite;"></i>
+                    </div>
+                    
+                    <!-- Motivational Quote or Tagline -->
+                    <div class="tagline" style="text-align: center; color: #fff;">
+                        <h3 style="font-size: 1.8rem; font-weight: 700; color: #ff5733;">"Transform Your Body, Transform Your Life!"</h3>
+                        <p style="font-size: 1.2rem; color: #aaa; line-height: 1.5; margin-top: 1rem;">Join our fitness community and begin your journey to a healthier, stronger you.</p>
+                    </div>
 
-				</div>
-				<div class="col-lg-6">
-					<div class="about-content"
-						style="background-color:  #111; padding: 2rem; border-radius: 10px; box-shadow: 0 0 10px grey;">
-						<h2 style="font-size: 2.5rem; font-weight: 700; color: #007bff; margin-bottom: 1.5rem;">About
-							<span style="color: #ff5733;">Us</span>
-						</h2>
-						<p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
-							Welcome to GymADDICT Fitness Center, where we're not just about building muscles, we're
-							about building lives. Our mission is to provide a supportive and motivating environment
-							where you can achieve your fitness goals and transform your life.
-						</p>
-						<p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
-							At GymADDICT, we understand that everyone's fitness journey is unique. That's why we offer a
-							diverse range of programs and classes designed to cater to all fitness levels and interests.
-							Whether you're looking to lose weight, gain muscle, improve your flexibility, or simply
-							enhance your overall well-being, we have something for you.
-						</p>
-						<p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
-							Our team of certified trainers is committed to helping you succeed. They'll work closely
-							with you to develop personalized workout plans, offer guidance on proper technique, and
-							provide the motivation you need to stay on track. Plus, our modern facilities are equipped
-							with the latest fitness equipment, ensuring that you have everything you need to reach your
-							full potential.
-						</p>
-						<p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
-							But GymADDICT is more than just a gym; it's a community. Here, you'll find support,
-							encouragement, and camaraderie as you work towards your fitness goals alongside like-minded
-							individuals. Whether you're sweating it out in a group fitness class or hitting the weights
-							solo, you'll always feel part of something bigger at GymADDICT.
-						</p>
-						<p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
-							So why wait? Join us today and take the first step towards a healthier, happier you. Whether
-							you're a fitness enthusiast or a complete beginner, you'll find everything you need to
-							succeed at GymADDICT Fitness Center.
-						</p>
-						<a href="about" class="btn btn-primary"
-							style="background-color: #007bff; border: none; padding: 0.75rem 1.5rem; transition: background-color 0.3s ease; color: #fff; font-size: 1rem; text-decoration: none; display: inline-block; margin-top: 1rem;">Read
-							More</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                    <!-- You can also replace this with a video element -->
+                    <div class="about-video mt-4">
+                        <video controls width="100%" style="border-radius: 10px; box-shadow: 0 0 10px grey;">
+                            <source src="/videos/about-us.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-lg-6">
+                <div class="about-content"
+                    style="background-color: #111; padding: 2rem; border-radius: 10px; box-shadow: 0 0 10px grey;">
+                    <h2 style="font-size: 2.5rem; font-weight: 700; color: #007bff; margin-bottom: 1.5rem;">
+                        About <span style="color: #ff5733;">Us</span>
+                    </h2>
+                    <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Welcome to FITNEX, where we're not just about building muscles, we're about building lives. Our mission is to provide a supportive and motivating environment where you can achieve your fitness goals and transform your life.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                        At FITNEX, we understand that everyone's fitness journey is unique. That's why we offer a diverse range of programs and classes designed to cater to all fitness levels and interests. Whether you're looking to lose weight, gain muscle, or improve your well-being, we have something for you.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Our certified trainers are committed to helping you succeed. They'll work closely with you to develop personalized workout plans, offer guidance on proper technique, and provide the motivation you need to stay on track.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                        But FITNEX is more than just a gym; it's a community where you'll find support, encouragement, and camaraderie as you work towards your fitness goals alongside like-minded individuals.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                        So why wait? Join us today and take the first step towards a healthier, happier you.
+                    </p>
+                    <a href="about" class="btn btn-primary"
+                        style="background-color: #007bff; border: none; padding: 0.75rem 1.5rem; transition: background-color 0.3s ease; color: #fff; font-size: 1rem; text-decoration: none; display: inline-block; margin-top: 1rem;">
+                        Read More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 	<!-- Footer -->
 
 	<footer style="background-color: rgb(0, 0, 0); color: #fff; padding: 20px; text-align: center;">
