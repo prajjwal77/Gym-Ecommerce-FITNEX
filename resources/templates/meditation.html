@@ -5,8 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meditation Class</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    	body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+
+
+		}
+
+		.navbar-brand {
+			font-weight: bold;
+		}
+
+		.navbar-text {
+			color: #ff5733;
+		}
+
+		.nav-link {
+			font-weight: bold;
+		}
+
+		.navbar {
+			background-color: black;
+		}
+		.text-center{
+			font-weight: bold;
+			color: #ff5733;
+		}
+		.text-about, .text-benifits,  .text-schedule{
+			font-weight: bold;
+		}
+	</style>
 </head>
-<body>
+<brbody>
+	<nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
+		<a class="navbar-brand">FIT<span style="color: #ff5733;">NEX</span></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/">Home</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
     <div class="container mt-5">
         <h1 class="text-center" style="color: #007bff;">Meditation Class</h1>
         <hr />
@@ -15,22 +61,122 @@
                 <img src="/images/meditation.jpg" class="img-fluid" alt="Meditation Class">
             </div>
             <div class="col-md-6">
-                <h2>About Meditation</h2>
+                <h2 class="text-about">About Meditation</h2>
                 <p>Learn to focus, relax, and center your thoughts through guided meditation in a serene environment.</p>
-                <h3>Benefits of Meditation</h3>
+                <h3 class="text-benifits">Benefits of Meditation</h3>
                 <ul>
                     <li>Reduces stress and anxiety</li>
                     <li>Increases mindfulness</li>
                     <li>Boosts mental clarity</li>
                     <li>Improves emotional health</li>
                 </ul>
-                <h3>Schedule</h3>
+                <h3 class="text-schedule">Schedule</h3>
                 <ul>
-                    <li>Wednesday: 7:00 AM - 8:00 AM</li>
-                    <li>Friday: 7:00 AM - 8:00 AM</li>
+                    <li>Monday - Saturday</li>
+                    <li>6:00 AM - 9:00 AM</li>
                 </ul>
             </div>
         </div>
     </div>
+    </br>
+    
+    	<!-- Footer -->
+
+	<footer style="background-color: rgb(0, 0, 0); color: #fff; padding: 20px; text-align: center;">
+		<div class="container"
+			style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+
+			<!-- Quick Contact -->
+			<div class="quick-contact" style="flex: 1; min-width: 200px; margin: 10px;">
+				<h3 id="contact" style="color: white; margin-bottom: 15px; font-weight: bold;">Quick Contact</h3>
+				<form th:action="@{/contact}" method="post">
+					<input type="email" name="email" placeholder="Enter Email"
+						style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 5px; border: none;"
+						required>
+					<textarea name="message" placeholder="Enter Message"
+						style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 5px; border: none; height: 60px;"
+						required></textarea>
+					<button type="submit"
+						style="background-color: red; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Send
+						Message</button>
+				</form>
+				<div th:if="${message}" class="alert alert-success" role="alert">
+					<p th:text="${message}"></p>
+				</div>
+			</div>
+
+			<!-- Latest News -->
+			<div class="latest-news" style="flex: 1; min-width: 200px; margin: 10px;">
+				<h3 style="color: white; margin-bottom: 15px; font-weight: bold;">Trending Blogs</h3>
+				<ul style="list-style-type: none; padding: 0;">
+					<li><a href="/nutritonTips"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Top 10 Gym
+							Workouts</a></li>
+					<li><a href="/yogaForBeginners"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Yoga for
+							Beginners</a></li>
+					<li><a href="/cardioWorkout"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Effective
+							Cardio Workouts</a></li>
+					<!-- Add more news items as needed -->
+				</ul>
+			</div>
+
+			<!-- Useful Links -->
+			<div class="useful-links" style="flex: 1; min-width: 200px; margin: 10px;">
+				<h3 style="color: white; margin-bottom: 15px; font-weight: bold;">Useful Links</h3>
+				<ul style="list-style-type: none; padding: 0;">
+					<li><a href="#membership"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Pricing</a>
+					</li>
+					<li><a href="#"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Privacy
+							Policy</a></li>
+					<li><a href="#"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Terms of
+							Service</a></li>
+					<!-- Add more useful links as needed -->
+				</ul>
+			</div>
+
+			<!-- Opening Hours -->
+			<div class="opening-hours" style="flex: 1; min-width: 200px; margin: 10px;">
+				<h3 style="color: white; margin-bottom: 15px; font-weight: bold;">Opening Hours</h3>
+				<p>Monday - Thursday: 4:00 am - 10:00 pm</p>
+				<p>Friday - Saturday: 5:00 am - 11:00 pm</p>
+				<p>Sunday : Closed</p>
+			</div>
+
+			<!-- Partition Line -->
+			<div style="width: 100%; margin: 20px 0;">
+				<hr style="border: 1px solid #ff5733;">
+			</div>
+
+			<!-- Subscribe -->
+			<div class="subscription"
+				style="flex: 1; min-width: 200px; margin: 10px; display: flex; justify-content: space-between;">
+				<div style="flex: 1;">
+					<div style="display: flex; gap: 10px;">
+						<input type="email" placeholder="Your email"
+							style="width: 70%; padding: 10px; border-radius: 5px; border: none;">
+						<button type="submit"
+							style="background-color: red; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Subscribe</button>
+					</div>
+				</div>
+
+				<!-- Social Media Icons -->
+				<div class="social-media" style="flex: 0 1 auto; min-width: 200px; margin: 10px;">
+					<h3 style="color: white; margin-bottom: 15px;">Follow Us</h3>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-youtube"></i></a>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-google-plus-g"></i></a>
+				</div>
+			</div>
+		</div>
+
+		<p style="margin-top: 20px;">&copy; 2024 FITNEX Fitness Center. All rights reserved.</p>
+	</footer>
 </body>
 </html>
