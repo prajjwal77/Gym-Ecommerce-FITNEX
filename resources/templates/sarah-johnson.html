@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sarah Johnson | FITNEX Trainer</title>
+	<!-- Include Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #fff;
+			background-color: rgb(34, 34, 34);
+		}
+
+		.navbar-brand {
+			font-weight: bold;
+		}
+
+		.navbar-text {
+			color: #ff5733;
+		}
+
+		.nav-link {
+			font-weight: bold;
+		}
+
+		.nav-link:hover {
+			transform: scale(1.2);
+		}
+
+		.navbar {
+			background-color: black;
+		}
+
+		.section {
+			padding: 60px 0;
+		}
+
+		.section h2 {
+			font-size: 2.5em;
+			margin-bottom: 20px;
+		}
+
+		.about-content p {
+			font-size: 1.1em;
+			line-height: 1.6;
+			color: lightskyblue;
+		}
+
+		.contact-info p {
+			font-size: 1.1em;
+			line-height: 1.6;
+			color: lightskyblue;
+		}
+
+		.contact-info a {
+			color: rgb(0, 128, 255);
+			text-decoration: none;
+		}
+
+		.developer-card {
+			background-color: rgb(34, 34, 34);
+			border-radius: 8px;
+			box-shadow: 0 0 10px grey;
+			padding: 20px;
+			text-align: center;
+		}
+
+		.developer-card .developer-image img {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			margin-bottom: 20px;
+		}
+
+		.developer-card h3 {
+			font-size: 1.8em;
+			margin-bottom: 10px;
+			color: #333;
+		}
+
+		.developer-card p {
+			font-size: 1.1em;
+			color: #666;
+		}
+
+		.social-links {
+			margin-top: 20px;
+
+		}
+
+		.social-links a {
+			color: #ff5733;
+			margin: 0 10px;
+			font-size: 1.5em;
+			text-decoration: none;
+		}
+
+		.social-links a:hover {
+			color: #333;
+		}
+
+		.details {
+			list-style-type: none;
+			padding-left: 0;
+		}
+
+		.details li {
+			background: url('/images/checkmark.svg') no-repeat left center;
+			padding-left: 25px;
+			margin-bottom: 10px;
+			color: #007bff;
+		}
+
+		/* Client Reviews */
+		.details li::before {
+			content: '✔ ';
+			color: #007bff;
+		}
+
+		.details li {
+			font-style: italic;
+			color: #444;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
+		<a class="navbar-brand">FIT<span style="color: #ff5733;">NEX</span></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/">Home</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="/profile">Profile</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- About Section -->
+	<section id="about" class="section about">
+		<div class="container">
+			<!-- Add your about content here -->
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="about-content">
+						<h2 style="font-weight: bold; color:white;">Running Coach</h2>
+						<!-- Add your organization's details here -->
+						<p style="color:lightskyblue;">Dedicated running coach specializing in marathon training, speed
+							improvement, and injury prevention techniques.</p>
+						<p><strong style="color: white;">Specializations:</strong></p>
+						<ul clas="details" style="color: lightskyblue;">
+							<li>Marathon Training</li>
+							<li>Speed Improvement</li>
+							<li>Injury Prevention</li>
+						</ul>
+						<p style="color: lightskyblue;"><strong style="color: white;">Experience:</strong> 5+ years</p>
+						<div class="education-section">
+							<h4 style="font-size: 1.1rem; font-weight: bold ;">Education</h4>
+							<ul style="color: lightskyblue;">
+								<li><strong>Certified Running Coach - Road Runners Club of America</strong></li>
+								<li><strong>Bachelor's Degree in Kinesiology - University of California</strong></li>
+							</ul>
+						</div>
+						<p><strong style="color: white;">Client Reviews:</strong></p>
+						<ul class="clients" style="color: lightskyblue;">
+							<li>
+								<strong>Emily Moore:</strong> Sarah's marathon training plan helped me complete my first
+								marathon injury-free. She's a fantastic coach!
+							</li>
+							<li>
+								<strong>Chris Evans:</strong> Her speed training drills were game-changers for me. I
+								shaved 2 minutes off my 10K time.
+							</li>
+						</ul>
+					</div>
+					<div class="contact-info">
+						<h3 style="font-weight: bold;">Contact Information</h3>
+						<p><strong style="color: white;">Organization:</strong> FITNEX Training Center</p>
+						<p><strong style="color: white;">Phone No.:</strong> 8880987890</p>
+						<p><strong style="color: white;">Email:</strong> <a
+								href="mailto:prajjwal792@gmail.com">sarahjohn@gmail.com</a></p>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="developer-card">
+						<h2 class="section-heading" style="font-weight: bold; color: #ff5733;">Meet Our Trainer</h2>
+						<div class="developer-image">
+							<img src="/images/trainer5.jpg" class="img-fluid" alt="Developer Image">
+						</div>
+						<div class="developer-details">
+							<h3 style="font-weight: bold; color: white;">Sarah Johnson</h3>
+							<p>Train more than 400 Students</p>
+							<p></p>
+							<!-- Social Media Links -->
+							<div class="social-links">
+								<a href="#" class="social-link" style="color:blue;"><i class="fab fa-linkedin"></i></a>
+								<a href="#" class="social-link" style="color: hotpink;"><i
+										class="fab fa-instagram"></i></a>
+								<a href="#" class="social-link" style="color: blue;"><i class="fab fa-twitter"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Footer -->
+	<footer style="background-color: rgb(0, 0, 0); color: #fff; padding: 20px; text-align: center;">
+		<div class="container"
+			style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+
+			<!-- Quick Contact -->
+			<div class="quick-contact" style="flex: 1; min-width: 200px; margin: 10px;">
+				<h3 id="contact" style="color: white; margin-bottom: 15px;">Quick Contact</h3>
+				<input type="email" placeholder="Enter Email"
+					style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 5px; border: none;">
+				<textarea placeholder="Enter Message"
+					style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 5px; border: none; height: 60px;"></textarea>
+				<button type="submit"
+					style="background-color: red; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Send
+					Message</button>
+			</div>
+
+			<!-- Latest News -->
+			<div class="latest-news" style="flex: 1; min-width: 200px; margin: 10px;">
+				<h3 style="color: white; margin-bottom: 15px;">Trending Blogs</h3>
+				<ul style="list-style-type: none; padding: 0;">
+					<li><a href="/nutritonTips"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Top 10 Gym
+							Workouts</a></li>
+					<li><a href="/yogaForBeginners"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Yoga for
+							Beginners</a></li>
+					<li><a href="/cardioWorkout"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Effective
+							Cardio Workouts</a></li>
+					<!-- Add more news items as needed -->
+				</ul>
+			</div>
+
+			<!-- Useful Links -->
+			<div class="useful-links" style="flex: 1; min-width: 200px; margin: 10px;">
+				<h3 style="color: white; margin-bottom: 15px;">Useful Links</h3>
+				<ul style="list-style-type: none; padding: 0;">
+					<li><a href="#membership"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Pricing</a>
+					</li>
+					<li><a href="#"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Privacy
+							Policy</a></li>
+					<li><a href="#"
+							style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Terms of
+							Service</a></li>
+					<!-- Add more useful links as needed -->
+				</ul>
+			</div>
+
+			<!-- Opening Hours -->
+			<div class="opening-hours" style="flex: 1; min-width: 200px; margin: 10px;">
+				<h3 style="color: white; margin-bottom: 15px;">Opening Hours</h3>
+				<p>Monday - Thursday: 4:00 am - 10:00 pm</p>
+				<p>Friday - Saturday: 5:00 am - 11:00 pm</p>
+				<p>Sunday : Closed</p>
+			</div>
+
+			<!-- Partition Line -->
+			<div style="width: 100%; margin: 20px 0;">
+				<hr style="border: 1px solid #ff5733;">
+			</div>
+
+			<!-- Subscribe -->
+			<div class="subscription"
+				style="flex: 1; min-width: 200px; margin: 10px; display: flex; justify-content: space-between;">
+				<div style="flex: 1;">
+					<div style="display: flex; gap: 10px;">
+						<input type="email" placeholder="Your email"
+							style="width: 70%; padding: 10px; border-radius: 5px; border: none;">
+						<button type="submit"
+							style="background-color: red; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Subscribe</button>
+					</div>
+				</div>
+
+				<!-- Social Media Icons -->
+				<div class="social-media" style="flex: 0 1 auto; min-width: 200px; margin: 10px;">
+					<h3 style="color: white; margin-bottom: 15px;">Follow Us</h3>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-youtube"></i></a>
+					<a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-google-plus-g"></i></a>
+				</div>
+			</div>
+		</div>
+
+		<p style="margin-top: 20px;">&copy; 2024 FITNEX Fitness Center. All rights reserved.</p>
+	</footer>
+
+	<!-- Include Bootstrap JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<!-- Custom Script -->
+	<script src="script.js"></script>
+</body>
+
+</html>
