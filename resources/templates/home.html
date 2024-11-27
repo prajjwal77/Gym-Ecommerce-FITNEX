@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>GymADDICT Fitness Center</title>
+	<title>FITNEX Fitness Center</title>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -17,21 +17,60 @@
 			background-color: #111;
 		}
 
-		.navbar-brand {
-			font-weight: bold;
-		}
+		/* Stylish Navbar */
+        .navbar-custom {
+            background-color: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid transparent;
+            transition: background-color 0.3s ease;
+        }
 
-		.navbar-text {
-			color: #ff5733;
-		}
+        .navbar-custom:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid #3498db;
+        }
 
-		.nav-link {
-			font-weight: bold;
-		}
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff !important;
+            transition: color 0.3s ease;
+        }
 
-		.nav-link:hover {
-			transform: scale(1.2);
-		}
+        .navbar-brand:hover {
+            color: #3498db !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-size: 1.1rem;
+            padding: 0.75rem 1.5rem;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #3498db !important;
+        }
+
+        /* Underline Animation */
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            left: 50%;
+            bottom: 0;
+            background-color: #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
 
 		.hero-section {
 			position: relative;
@@ -411,16 +450,15 @@
 </head>
 
 <body>
-
-	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
-		<a class="navbar-brand">FIT<span style="color: #ff5733;">NEX</span></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav ml-auto">
+	
+	  <!-- Stylish Navigation Bar -->
+     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <a class="navbar-brand">FIT<span style="color: #ff5733;">NEX</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+           	<ul class="navbar-nav ml-auto">
 				<li class="nav-item active">
 					<a class="nav-link">Home <span class="sr-only">(current)</span></a>
 				</li>
@@ -450,8 +488,8 @@
 					<a class="nav-link" href="/profile">Profile</a>
 				</li>
 			</ul>
-		</div>
-	</nav>
+        </div>
+    </nav>
 
 	<!-- Hero Section -->
 	<header class="hero-section">
@@ -829,8 +867,10 @@
 				<div class="col-md-4">
 					<div class="trainer-card">
 						<div class="image-wrapper-trainers">
+							 <a href="/trainer/prajjwal-yadav">
 							<img src="/images/trainer1.jpg" class="img-fluid" alt="Trainer 1">
 							<div class="trainer-name">Prajjwal Yadav</div>
+							 </a>
 						</div>
 						<div class="trainer-details">
 							<p>Personal Trainer</p>
@@ -843,8 +883,10 @@
 				<div class="col-md-4">
 					<div class="trainer-card">
 						<div class="image-wrapper-trainers">
+							 <a href="/trainer/aditi-pandit">
 							<img src="/images/trainer2.jpg" class="img-fluid cropped-image" alt="Trainer 2">
 							<div class="trainer-name">Aditi Pandit</div>
+							 </a>
 						</div>
 						<div class="trainer-details">
 							<p>Yoga Instructor</p>
@@ -857,8 +899,10 @@
 				<div class="col-md-4">
 					<div class="trainer-card">
 						<div class="image-wrapper-trainers">
+							 <a href="/trainer/jeet-selal">
 							<img src="/images/trainer3.jpg" class="img-fluid cropped-image" alt="Trainer 3">
 							<div class="trainer-name">Jeet Selal</div>
+							</a>
 						</div>
 						<div class="trainer-details">
 							<p>Cardio Coach</p>
@@ -871,8 +915,10 @@
 				<div class="col-md-4">
 					<div class="trainer-card">
 						<div class="image-wrapper-trainers">
+							<a href="/trainer/abhishek-yadav">
 							<img src="/images/trainer4.png" class="img-fluid cropped-image" alt="Trainer 4">
 							<div class="trainer-name">Abhishek Yadav</div>
+							</a>
 						</div>
 						<div class="trainer-details">
 							<p>Bodybuilding Coach</p>
@@ -885,8 +931,10 @@
 				<div class="col-md-4">
 					<div class="trainer-card">
 						<div class="image-wrapper-trainers">
+							<a href="/trainer/sarah-johnson">
 							<img src="/images/trainer5.jpg" class="img-fluid cropped-image" alt="Trainer 5">
 							<div class="trainer-name">Sarah Johnson</div>
+							</a>
 						</div>
 						<div class="trainer-details">
 							<p>Running Coach</p>
@@ -899,8 +947,10 @@
 				<div class="col-md-4">
 					<div class="trainer-card">
 						<div class="image-wrapper-trainers">
+							<a href="/trainer/michael-anderson">
 							<img src="/images/trainer6.png" class="img-fluid cropped-image" alt="Trainer 6">
 							<div class="trainer-name">Michael Anderson</div>
+							</a>
 						</div>
 						<div class="trainer-details">
 							<p>Cycling Instructor</p>
